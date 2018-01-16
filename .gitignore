@@ -29,6 +29,7 @@ out/
 .metadata/
 RemoteSystemsTempFiles/
 Servers/
+.recommenders/
 
 #Maven
 target/
