@@ -1,13 +1,16 @@
 package com.sguess.learn.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.*;
 
-@Entity(name="city")
+import org.hibernate.annotations.Cascade;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@Entity(name = "city")
 public class City implements Serializable {
 
-	
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -17,9 +20,15 @@ public class City implements Serializable {
 
 	@Column(nullable = false)
 	private String state;
+	
+	@OneToMany(cascade = {CascadeType.ALL})
+	private List<Street> streets;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	private Mayor mayor;
 
 	protected City() {
-		
+
 	}
 
 	public City(String name, String state) {
@@ -50,5 +59,22 @@ public class City implements Serializable {
 	public void setState(String state) {
 		this.state = state;
 	}
+
+	public List<Street> getStreets() {
+		return streets;
+	}
+
+	public void setStreets(List<Street> streets) {
+		this.streets = streets;
+	}
+
+	public Mayor getMayor() {
+		return mayor;
+	}
+
+	public void setMayor(Mayor mayor) {
+		this.mayor = mayor;
+	}
+	
 
 }
