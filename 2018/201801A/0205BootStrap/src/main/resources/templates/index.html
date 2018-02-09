@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
 <title>Insert title here</title>
+<!-- webjars/bootstrap/3.3.7/js/bootstrap.min.js -->
+<script src='webjars/bootstrap/3.3.7/js/bootstrap.js'	type='text/javascript'></script>
+<script src='webjars/bootstrap/3.3.7/js/bootstrap.min.js'	type='text/javascript'></script>
+<script src='webjars/bootstrap/3.3.7/js/*.js' type='text/javascript'></script>
+
+<script src='webjars/jquery/3.3.1/dist/jquery.min.js' type='text/javascript'></script>
+
+<link rel='stylesheet'
+	href='webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css' />
+<link rel='stylesheet'
+	href='webjars/bootstrap/3.3.7/css/bootstrap.min.css' />
 </head>
 <body>
-	Hello
-	<ul class="nav nav-tabs">
-		<li role="presentation" class="active"><a href="#">Home</a></li>
-		<li role="presentation"><a href="#">Profile</a></li>
-		<li role="presentation"><a href="#">Messages</a></li>
-	</ul>
+	<nav class="navbar navbar-default">
+		<ul class="nav nav-tabs">
+			<li role="presentation" class="dropdown"><a
+				class="dropdown-toggle" data-toggle="dropdown" href="#"
+				role="button" aria-haspopup="true" aria-expanded="false">
+					Dropdown <span class="caret"></span>
+			</a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Action</a></li>
+				</ul></li>
+			<li><a href="#">Action</a></li>
+
+		</ul>
+	</nav>
+
 </body>
 </html>

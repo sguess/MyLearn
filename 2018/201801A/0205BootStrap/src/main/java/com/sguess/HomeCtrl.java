@@ -15,10 +15,15 @@ public class HomeCtrl {
 		System.out.println("--------------------");
 		return "header";
 	}
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String index(Model model) {
+		System.out.println("--------------------");
+		return "index";
+	}
 	@RequestMapping(value = "/s01", method = RequestMethod.GET)
 	public String homePageS01(Model model, HttpServletRequest request) {
 		System.out.println("--------------------s01");
 		request.getRequestDispatcher("s01");
-		return "classpath:static/s01.html";
+		return "s01.html";
 	}
 }
