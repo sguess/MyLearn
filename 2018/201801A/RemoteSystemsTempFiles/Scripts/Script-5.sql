@@ -1,0 +1,1 @@
+select * from sguessobj.sina_status_raw_data_table order by id desc limit 2;
