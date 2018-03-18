@@ -1,10 +1,4 @@
 show databases;
-drop database tmp; 
-create database tmp;
-use tmp;
+use sguessobj;
 show tables;
-
-select * from city;
-select * from city_streets;
-select * from mayor;
-select * from street;
+select * from sina_status_raw_data_table order by id desc;

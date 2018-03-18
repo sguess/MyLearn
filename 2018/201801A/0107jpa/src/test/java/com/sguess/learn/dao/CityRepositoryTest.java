@@ -34,7 +34,7 @@ public class CityRepositoryTest {
 		City city = new City("name001", "state001");
 		dao.save(city);
 		dao.save(city);
-		List cityList = dao.findAll();
+		List<City> cityList = dao.findAll();
 		assertEquals(1, cityList.size());
 	}
 
