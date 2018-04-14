@@ -33,6 +33,4 @@ Servers/
 #Maven
 target/
 
-#Sguess
-sguess/
-*/sguess/
+
