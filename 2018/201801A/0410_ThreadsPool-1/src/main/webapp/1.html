@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<code class="hljs avrasm has-numbering"
+		style="display: block; padding: 0px; color: inherit; box-sizing: border-box; font-family: 'Source Code Pro', monospace; font-size: undefined; white-space: pre; border-radius: 0px; word-wrap: normal; background: transparent;">
+		LinkedBlockingDeque
+		<TempObject> linkedDeque = new LinkedBlockingDeque<TempObject>()<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span> // <span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">push</span>
+		，可以从队列的头部插入元素 linkedDeque<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.push</span>(new
+		TempObject(<span class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">1</span>))<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span>
+		linkedDeque<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.push</span>(new
+		TempObject(<span class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">2</span>))<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span>
+		linkedDeque<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.push</span>(new
+		TempObject(<span class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">3</span>))<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span> //
+		poll ， 可以从队列的头部取出元素 TempObject tempObject = linkedDeque<span
+			class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.poll</span>()<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span> //
+		这里会打印 tempObject<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.index</span>
+		= <span class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">3</span>
+		System<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.out</span>
+		<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.println</span>(<span
+			class="hljs-string"
+			style="color: rgb(0, 136, 0); box-sizing: border-box;">"tempObject.index
+			= "</span> + tempObject<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.getIndex</span>())<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span> //
+		put ， 可以从队列的尾部插入元素 linkedDeque<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.put</span>(new
+		TempObject(<span class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">4</span>))<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span>
+		linkedDeque<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.put</span>(new
+		TempObject(<span class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">5</span>))<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span> //
+		pollLast , 可以从队列尾部取出元素 tempObject = linkedDeque<span
+			class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.pollLast</span>()<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span> //
+		这里会打印 tempObject<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.index</span>
+		= <span class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">5</span>
+		System<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.out</span>
+		<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.println</span>(<span
+			class="hljs-string"
+			style="color: rgb(0, 136, 0); box-sizing: border-box;">"tempObject.index
+			= "</span> + tempObject<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.getIndex</span>())<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span>
+	</code>
+	<ul class="pre-numbering"
+		style="box-sizing: border-box; position: absolute; width: 50px; top: 0px; left: 0px; margin: 0px; padding: 6px 0px 40px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); list-style: none; text-align: right; background-color: rgb(238, 238, 238);">
+		<li style="box-sizing: border-box; padding: 0px 5px;">1</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">2</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">3</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">4</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">5</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">6</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">7</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">8</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">9</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">10</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">11</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">12</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">13</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">14</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">15</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">16</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">17</li>
+	</ul>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<code class="hljs avrasm has-numbering"
+		style="display: block; padding: 0px; color: inherit; box-sizing: border-box; font-family: 'Source Code Pro', monospace; font-size: undefined; white-space: pre; border-radius: 0px; word-wrap: normal; background: transparent;">
+		PriorityBlockingQueue
+		<TempObject> priorityQueue = new PriorityBlockingQueue<TempObject>()<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span>
+		priorityQueue<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.put</span>(new
+		TempObject(-<span class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">5</span>))<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span>
+		priorityQueue<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.put</span>(new
+		TempObject(<span class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">5</span>))<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span>
+		priorityQueue<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.put</span>(new
+		TempObject(-<span class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">1</span>))<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span>
+		priorityQueue<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.put</span>(new
+		TempObject(<span class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">1</span>))<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span> //
+		第一个元素是<span class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">5</span> //
+		实际上在还没有执行priorityQueue<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.poll</span>()语句的时候，队列中的第二个元素不一定是<span
+			class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">1</span>
+		TempObject targetTempObject = priorityQueue<span
+			class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.poll</span>()<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span>
+		System<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.out</span>
+		<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.println</span>(<span
+			class="hljs-string"
+			style="color: rgb(0, 136, 0); box-sizing: border-box;">"tempObject.index
+			= "</span> + targetTempObject<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.getIndex</span>())<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span> //
+		第二个元素是<span class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">1</span>
+		targetTempObject = priorityQueue<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.poll</span>()<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span>
+		System<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.out</span>
+		<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.println</span>(<span
+			class="hljs-string"
+			style="color: rgb(0, 136, 0); box-sizing: border-box;">"tempObject.index
+			= "</span> + targetTempObject<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.getIndex</span>())<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span> //
+		第三个元素是-<span class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">1</span>
+		targetTempObject = priorityQueue<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.poll</span>()<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span>
+		System<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.out</span>
+		<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.println</span>(<span
+			class="hljs-string"
+			style="color: rgb(0, 136, 0); box-sizing: border-box;">"tempObject.index
+			= "</span> + targetTempObject<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.getIndex</span>())<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span> //
+		第四个元素是-<span class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">5</span>
+		targetTempObject = priorityQueue<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.poll</span>()<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span>
+		System<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.out</span>
+		<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.println</span>(<span
+			class="hljs-string"
+			style="color: rgb(0, 136, 0); box-sizing: border-box;">"tempObject.index
+			= "</span> + targetTempObject<span class="hljs-preprocessor"
+			style="color: rgb(68, 68, 68); box-sizing: border-box;">.getIndex</span>())<span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">;</span>
+	</code>
+	<ul class="pre-numbering"
+		style="box-sizing: border-box; position: absolute; width: 50px; top: 0px; left: 0px; margin: 0px; padding: 6px 0px 40px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); list-style: none; text-align: right; background-color: rgb(238, 238, 238);">
+		<li style="box-sizing: border-box; padding: 0px 5px;">1</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">2</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">3</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">4</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">5</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">6</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">7</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">8</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">9</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">10</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">11</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">12</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">13</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">14</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">15</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">16</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">17</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">18</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">19</li>
+	</ul>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<code class="hljs axapta has-numbering"
+		style="display: block; padding: 0px; color: inherit; box-sizing: border-box; font-family: 'Source Code Pro', monospace; font-size: undefined; white-space: pre; border-radius: 0px; word-wrap: normal; background: transparent;">
+		<span class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">//
+			这个元素类，必须实现Comparable接口</span> <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">private</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">static</span>
+		<span class="hljs-class" style="box-sizing: border-box;"><span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">class</span> <span
+			class="hljs-title"
+			style="box-sizing: border-box; color: rgb(102, 0, 102);">TempObject</span>
+			<span class="hljs-inheritance" style="box-sizing: border-box;"><span
+				class="hljs-keyword"
+				style="color: rgb(0, 0, 136); box-sizing: border-box;">implements</span></span>
+			<span class="hljs-title"
+			style="box-sizing: border-box; color: rgb(102, 0, 102);">Comparable</span><<span
+			class="hljs-title"
+			style="box-sizing: border-box; color: rgb(102, 0, 102);">TempObject</span>>
+			{</span> <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">private</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">int</span> <span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">index</span>;
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		TempObject(<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">int</span> <span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">index</span>)
+		{ <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">this</span>.<span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">index</span> =
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">index</span>;
+		} <span class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">/** *
+			@return the index */</span> <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">int</span>
+		getIndex() { <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">return</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">index</span>;
+		} <span class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">/*
+			(non-Javadoc) * @see java.lang.Comparable#compareTo(java.lang.Object)
+			*/</span> @Override <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">int</span>
+		compareTo(TempObject o) { <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">return</span>
+		o.getIndex() - <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">this</span>.<span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">index</span>;
+		} }
+	</code>
+	<ul class="pre-numbering"
+		style="box-sizing: border-box; position: absolute; width: 50px; top: 0px; left: 0px; margin: 0px; padding: 6px 0px 40px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); list-style: none; text-align: right; background-color: rgb(238, 238, 238);">
+		<li style="box-sizing: border-box; padding: 0px 5px;">1</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">2</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">3</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">4</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">5</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">6</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">7</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">8</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">9</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">10</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">11</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">12</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">13</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">14</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">15</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">16</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">17</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">18</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">19</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">20</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">21</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">22</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">23</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">24</li>
+	</ul>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<code class="hljs java has-numbering"
+		style="display: block; padding: 0px; color: inherit; box-sizing: border-box; font-family: 'Source Code Pro', monospace; font-size: undefined; white-space: pre; border-radius: 0px; word-wrap: normal; background: transparent;">
+		<span class="hljs-javadoc"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">/** *
+			生产者线程 */</span> <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">private</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">static</span>
+		<span class="hljs-class" style="box-sizing: border-box;"><span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">class</span> <span
+			class="hljs-title"
+			style="box-sizing: border-box; color: rgb(102, 0, 102);">ProducerRunnable</span>
+			<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">implements</span>
+			<span class="hljs-title"
+			style="box-sizing: border-box; color: rgb(102, 0, 102);">Runnable</span>
+			{</span> <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">private</span>
+		LinkedTransferQueue
+		<TempObject> linkedQueue; <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		<span class="hljs-title" style="box-sizing: border-box;">ProducerRunnable</span>(LinkedTransferQueue<TempObject>
+		linkedQueue) { <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">this</span>.linkedQueue
+		= linkedQueue; } <span class="hljs-annotation"
+			style="color: rgb(155, 133, 157); box-sizing: border-box;">@Override</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">void</span> <span
+			class="hljs-title" style="box-sizing: border-box;">run</span>() { <span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">for</span>(<span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">int</span>
+		index = <span class="hljs-number"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">1</span> ; ;
+		index++) { <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">try</span> { <span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">//
+			向LinkedTransferQueue队列插入一个新的元素</span> <span class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">//
+			然后生产者线程就会等待，直到有一个消费者将这个元素从队列中取走</span> <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">this</span>.linkedQueue.transfer(<span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">new</span>
+		TempObject(index)); } <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">catch</span>
+		(InterruptedException e) { e.printStackTrace(System.out); } } } } <span
+			class="hljs-javadoc"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">/** *
+			消费者线程 */</span> <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">private</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">static</span>
+		<span class="hljs-class" style="box-sizing: border-box;"><span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">class</span> <span
+			class="hljs-title"
+			style="box-sizing: border-box; color: rgb(102, 0, 102);">ConsumerRunnable</span>
+			<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">implements</span>
+			<span class="hljs-title"
+			style="box-sizing: border-box; color: rgb(102, 0, 102);">Runnable</span>
+			{</span> <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">private</span>
+		LinkedTransferQueue<TempObject> linkedQueue; <span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		<span class="hljs-title" style="box-sizing: border-box;">ConsumerRunnable</span>(LinkedTransferQueue<TempObject>
+		linkedQueue) { <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">this</span>.linkedQueue
+		= linkedQueue; } <span class="hljs-annotation"
+			style="color: rgb(155, 133, 157); box-sizing: border-box;">@Override</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">void</span> <span
+			class="hljs-title" style="box-sizing: border-box;">run</span>() {
+		Thread currentThread = Thread.currentThread(); <span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">while</span>(!currentThread.isInterrupted())
+		{ <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">try</span> { <span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">//
+			等待，直到从LinkedTransferQueue队列中得到一个元素</span> TempObject targetObject = <span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">this</span>.linkedQueue.take();
+		System.out.println(<span class="hljs-string"
+			style="color: rgb(0, 136, 0); box-sizing: border-box;">"线程（"</span> +
+		currentThread.getId() + <span class="hljs-string"
+			style="color: rgb(0, 136, 0); box-sizing: border-box;">"）取得targetObject.index
+			= "</span> + targetObject.getIndex()); } <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">catch</span>
+		(InterruptedException e) { e.printStackTrace(System.out); } } } }
+	</code>
+	<ul class="pre-numbering"
+		style="box-sizing: border-box; position: absolute; width: 50px; top: 0px; left: 0px; margin: 0px; padding: 6px 0px 40px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); list-style: none; text-align: right; background-color: rgb(238, 238, 238);">
+		<li style="box-sizing: border-box; padding: 0px 5px;">1</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">2</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">3</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">4</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">5</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">6</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">7</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">8</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">9</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">10</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">11</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">12</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">13</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">14</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">15</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">16</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">17</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">18</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">19</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">20</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">21</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">22</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">23</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">24</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">25</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">26</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">27</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">28</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">29</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">30</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">31</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">32</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">33</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">34</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">35</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">36</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">37</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">38</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">39</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">40</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">41</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">42</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">43</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">44</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">45</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">46</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">47</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">48</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">49</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">50</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">51</li>
+	</ul>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<code class="hljs lasso has-numbering"
+		style="display: block; padding: 0px; color: inherit; box-sizing: border-box; font-family: 'Source Code Pro', monospace; font-size: undefined; white-space: pre; border-radius: 0px; word-wrap: normal; background: transparent;">
+		LinkedTransferQueue<span class="hljs-subst"
+			style="color: rgb(0, 0, 0); box-sizing: border-box;"><</span>TempObject<span
+			class="hljs-subst"
+			style="color: rgb(0, 0, 0); box-sizing: border-box;">></span>
+		linkedQueue <span class="hljs-subst"
+			style="color: rgb(0, 0, 0); box-sizing: border-box;">=</span> <span
+			class="hljs-literal"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">new</span>
+		LinkedTransferQueue<span class="hljs-subst"
+			style="color: rgb(0, 0, 0); box-sizing: border-box;"><</span>TempObject<span
+			class="hljs-subst"
+			style="color: rgb(0, 0, 0); box-sizing: border-box;">></span>(); <span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">//
+			这是一个生产者线程</span> <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">Thread</span>
+		producerThread <span class="hljs-subst"
+			style="color: rgb(0, 0, 0); box-sizing: border-box;">=</span> <span
+			class="hljs-literal"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">new</span> <span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">Thread</span>(<span
+			class="hljs-literal"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">new</span>
+		ProducerRunnable(linkedQueue)); <span class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">//
+			这里有两个消费者线程</span> <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">Thread</span>
+		consumerRunnable1 <span class="hljs-subst"
+			style="color: rgb(0, 0, 0); box-sizing: border-box;">=</span> <span
+			class="hljs-literal"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">new</span> <span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">Thread</span>(<span
+			class="hljs-literal"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">new</span>
+		ConsumerRunnable(linkedQueue)); <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">Thread</span>
+		consumerRunnable2 <span class="hljs-subst"
+			style="color: rgb(0, 0, 0); box-sizing: border-box;">=</span> <span
+			class="hljs-literal"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">new</span> <span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">Thread</span>(<span
+			class="hljs-literal"
+			style="color: rgb(0, 102, 102); box-sizing: border-box;">new</span>
+		ConsumerRunnable(linkedQueue)); <span class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">// 开始运行</span>
+		producerThread<span class="hljs-built_in"
+			style="color: rgb(102, 0, 102); box-sizing: border-box;">.</span>start();
+		consumerRunnable1<span class="hljs-built_in"
+			style="color: rgb(102, 0, 102); box-sizing: border-box;">.</span>start();
+		consumerRunnable2<span class="hljs-built_in"
+			style="color: rgb(102, 0, 102); box-sizing: border-box;">.</span>start();
+		<span class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">//
+			这里只是为了main不退出，没有任何演示含义</span> <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">Thread</span>
+		currentThread <span class="hljs-subst"
+			style="color: rgb(0, 0, 0); box-sizing: border-box;">=</span> <span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">Thread</span><span
+			class="hljs-built_in"
+			style="color: rgb(102, 0, 102); box-sizing: border-box;">.</span>currentThread();
+		synchronized (currentThread) { currentThread<span
+			class="hljs-built_in"
+			style="color: rgb(102, 0, 102); box-sizing: border-box;">.</span>wait();
+		}
+	</code>
+	<ul class="pre-numbering"
+		style="box-sizing: border-box; position: absolute; width: 50px; top: 0px; left: 0px; margin: 0px; padding: 6px 0px 40px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); list-style: none; text-align: right; background-color: rgb(238, 238, 238);">
+		<li style="box-sizing: border-box; padding: 0px 5px;">1</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">2</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">3</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">4</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">5</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">6</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">7</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">8</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">9</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">10</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">11</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">12</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">13</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">14</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">15</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">16</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">17</li>
+	</ul>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<code class="hljs cs has-numbering"
+		style="display: block; padding: 0px; color: inherit; box-sizing: border-box; font-family: 'Source Code Pro', monospace; font-size: undefined; white-space: pre; border-radius: 0px; word-wrap: normal; background: transparent;">
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		<span class="hljs-title" style="box-sizing: border-box;">ThreadPoolExecutor</span>(<span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">int</span>
+		corePoolSize, <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">int</span>
+		maximumPoolSize, <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">long</span>
+		keepAliveTime, TimeUnit unit, BlockingQueue
+		<Runnable> workQueue) <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		<span class="hljs-title" style="box-sizing: border-box;">ThreadPoolExecutor</span>(<span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">int</span>
+		corePoolSize, <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">int</span>
+		maximumPoolSize, <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">long</span>
+		keepAliveTime, TimeUnit unit, BlockingQueue<Runnable>
+		workQueue, ThreadFactory threadFactory)
+	</code>
+	<ul class="pre-numbering"
+		style="box-sizing: border-box; position: absolute; width: 50px; top: 0px; left: 0px; margin: 0px; padding: 6px 0px 40px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); list-style: none; text-align: right; background-color: rgb(238, 238, 238);">
+		<li style="box-sizing: border-box; padding: 0px 5px;">1</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">2</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">3</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">4</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">5</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">6</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">7</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">8</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">9</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">10</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">11</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">12</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">13</li>
+	</ul>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<code class="hljs java has-numbering"
+		style="display: block; padding: 0px; color: inherit; box-sizing: border-box; font-family: 'Source Code Pro', monospace; font-size: undefined; white-space: pre; border-radius: 0px; word-wrap: normal; background: transparent;">
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		<span class="hljs-class" style="box-sizing: border-box;"><span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">class</span> <span
+			class="hljs-title"
+			style="box-sizing: border-box; color: rgb(102, 0, 102);">ThreadPoolExecutor</span>
+			<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">extends</span>
+			<span class="hljs-title"
+			style="box-sizing: border-box; color: rgb(102, 0, 102);">AbstractExecutorService</span>
+			{</span> ...... <span class="hljs-javadoc"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">/** *
+			The default rejected execution handler */</span> <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">private</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">static</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">final</span>
+		RejectedExecutionHandler defaultHandler = <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">new</span>
+		AbortPolicy(); ...... <span class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">//
+			可以看到，ThreadPoolExecutor中的两个没有指定RejectedExecutionHandler</span> <span
+			class="hljs-comment"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">//
+			接口的构造函数，都是使用了一个RejectedExecutionHandler接口的默认实现：AbortPolicy</span> <span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		<span class="hljs-title" style="box-sizing: border-box;">ThreadPoolExecutor</span>(<span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">int</span>
+		corePoolSize, <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">int</span>
+		maximumPoolSize, <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">long</span>
+		keepAliveTime, TimeUnit unit, BlockingQueue
+		<Runnable> workQueue) { <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">this</span>(corePoolSize,
+		maximumPoolSize, keepAliveTime, unit, workQueue,
+		Executors.defaultThreadFactory(), defaultHandler); } ...... <span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		<span class="hljs-title" style="box-sizing: border-box;">ThreadPoolExecutor</span>(<span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">int</span>
+		corePoolSize, <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">int</span>
+		maximumPoolSize, <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">long</span>
+		keepAliveTime, TimeUnit unit, BlockingQueue<Runnable>
+		workQueue, ThreadFactory threadFactory) { <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">this</span>(corePoolSize,
+		maximumPoolSize, keepAliveTime, unit, workQueue, threadFactory,
+		defaultHandler); } ...... }
+	</code>
+	<ul class="pre-numbering"
+		style="box-sizing: border-box; position: absolute; width: 50px; top: 0px; left: 0px; margin: 0px; padding: 6px 0px 40px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); list-style: none; text-align: right; background-color: rgb(238, 238, 238);">
+		<li style="box-sizing: border-box; padding: 0px 5px;">1</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">2</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">3</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">4</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">5</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">6</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">7</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">8</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">9</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">10</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">11</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">12</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">13</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">14</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">15</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">16</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">17</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">18</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">19</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">20</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">21</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">22</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">23</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">24</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">25</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">26</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">27</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">28</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">29</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">30</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">31</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">32</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">33</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">34</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">35</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">36</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">37</li>
+	</ul>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<code class="hljs java has-numbering"
+		style="display: block; padding: 0px; color: inherit; box-sizing: border-box; font-family: 'Source Code Pro', monospace; font-size: undefined; white-space: pre; border-radius: 0px; word-wrap: normal; background: transparent;">
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">static</span>
+		<span class="hljs-class" style="box-sizing: border-box;"><span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">class</span> <span
+			class="hljs-title"
+			style="box-sizing: border-box; color: rgb(102, 0, 102);">CallerRunsPolicy</span>
+			<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">implements</span>
+			<span class="hljs-title"
+			style="box-sizing: border-box; color: rgb(102, 0, 102);">RejectedExecutionHandler</span>
+			{</span> <span class="hljs-javadoc"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">/** *
+			Creates a {@code CallerRunsPolicy}. */</span> <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		<span class="hljs-title" style="box-sizing: border-box;">CallerRunsPolicy</span>()
+		{ } <span class="hljs-javadoc"
+			style="color: rgb(136, 0, 0); box-sizing: border-box;">/** *
+			Executes task r in the caller's thread, unless the executor * has
+			been shut down, in which case the task is discarded. * *<span
+			class="hljs-javadoctag"
+			style="color: rgb(102, 0, 102); box-sizing: border-box;">
+				@param</span> r the runnable task requested to be executed *<span
+			class="hljs-javadoctag"
+			style="color: rgb(102, 0, 102); box-sizing: border-box;">
+				@param</span> e the executor attempting to execute this task */
+		</span> <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">void</span> <span
+			class="hljs-title" style="box-sizing: border-box;">rejectedExecution</span>(Runnable
+		r, ThreadPoolExecutor e) { <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">if</span>
+		(!e.isShutdown()) { r.run(); } } }
+	</code>
+	<ul class="pre-numbering"
+		style="box-sizing: border-box; position: absolute; width: 50px; top: 0px; left: 0px; margin: 0px; padding: 6px 0px 40px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); list-style: none; text-align: right; background-color: rgb(238, 238, 238);">
+		<li style="box-sizing: border-box; padding: 0px 5px;">1</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">2</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">3</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">4</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">5</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">6</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">7</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">8</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">9</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">10</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">11</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">12</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">13</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">14</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">15</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">16</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">17</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">18</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">19</li>
+	</ul>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<code class="hljs java has-numbering"
+		style="display: block; padding: 0px; color: inherit; box-sizing: border-box; font-family: 'Source Code Pro', monospace; font-size: undefined; white-space: pre; border-radius: 0px; word-wrap: normal; background: transparent;">
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">static</span>
+		<span class="hljs-class" style="box-sizing: border-box;"><span
+			class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">class</span> <span
+			class="hljs-title"
+			style="box-sizing: border-box; color: rgb(102, 0, 102);">DiscardOldestPolicy</span>
+			<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">implements</span>
+			<span class="hljs-title"
+			style="box-sizing: border-box; color: rgb(102, 0, 102);">RejectedExecutionHandler</span>
+			{</span> ...... <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">public</span>
+		<span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">void</span> <span
+			class="hljs-title" style="box-sizing: border-box;">rejectedExecution</span>(Runnable
+		r, ThreadPoolExecutor e) { <span class="hljs-keyword"
+			style="color: rgb(0, 0, 136); box-sizing: border-box;">if</span>
+		(!e.isShutdown()) { e.getQueue().poll(); e.execute(r); } } ...... }
+	</code>
+	<ul class="pre-numbering"
+		style="box-sizing: border-box; position: absolute; width: 50px; top: 0px; left: 0px; margin: 0px; padding: 6px 0px 40px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); list-style: none; text-align: right; background-color: rgb(238, 238, 238);">
+		<li style="box-sizing: border-box; padding: 0px 5px;">1</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">2</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">3</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">4</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">5</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">6</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">7</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">8</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">9</li>
+		<li style="box-sizing: border-box; padding: 0px 5px;">10</li>
+	</ul>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+
+</body>
+</html>
