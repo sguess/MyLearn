@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<!-- Navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top"
+		th:fragment="header">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" rel="home" href="/"
+					title="WFC SP/AV POC"> 
+					<img style="width: 210px;height:25px; margin-top: 0px;margin-left: -100px;"
+					src="img/spavlogo.png"/>
+				</a>
+			</div>
+			<div class="navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li th:classappend="${module == 'serverManagement' ? 'active' : ''}"><a href="#"  th:href="@{serverManagement}">Server Management</a></li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li class="dropdown"  th:classappend="${module == 'spDeployment' ? 'active' : ''}">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SP Deployment <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#" th:href="@{deploymentPlan}">Deployment Plan Management</a></li>
+							<li><a href="#" th:href="@{navigatorToCreatePlan}">Create Deployment Plan</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#" th:href="@{navigatorToCustomizeDeploymentPlan}">Customize Deployment Plan</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li th:classappend="${module == 'dscReport' ? 'active' : ''}"><a href="#" th:href="@{dscReport}">DSC Report</a></li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li class="dropdown"  th:classappend="${module == 'validation' ? 'active' : ''}">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Application Validation<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#" th:href="@{navigatorToValidationCreation}">Create Validation</a></li>
+							<li><a href="#" th:href="@{validationResult}">Validation Result</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li th:classappend="${module == 'userManagement' ? 'active' : ''}"><a href="#" th:href="@{userManagement}">User Management</a></li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li th:classappend="${module == 'systemConfiguration' ? 'active' : ''}"><a href="#" th:href="@{systemConfiguration}">System Configuration</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

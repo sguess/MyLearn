@@ -29,6 +29,7 @@ out/
 .metadata/
 Servers/
 .recommenders/
+STS/
 
 #Maven
 target/
