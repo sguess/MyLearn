@@ -21,14 +21,14 @@ public class HomeCtrl {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String homePage(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
-		LOG.info("----------------->{}", new Date());
+		LOG.info("-----------------> {}", new Date());
 		return "pages/main";
 	}
 
 	@RequestMapping(value = "/getValue", method = RequestMethod.GET)
 	@ResponseBody
 	public String getValue() throws IOException {
-		LOG.info("----------------->getValue{}", new Date());
+		LOG.info("----------------->getValue {}", new Date());
 		return "Hello, This ia a value from backgroud!";
 	}
 

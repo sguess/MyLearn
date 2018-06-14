@@ -7,9 +7,9 @@ $(function(){
 		$.ajax({
 			"type":"GET",
 			"url":"/getValue",
-			dataType:"json",
+			dataType:"text",
 			"success": function(data){
-				$("#txtAjax").val("success");
+				$("#txtAjax").val(data);
 		      },
 		      "error": function(XMLHttpRequest,textStatus,errorThrown){
 								$("#txtAjax").val(
