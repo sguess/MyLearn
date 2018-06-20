@@ -22,7 +22,7 @@ public class RestCtl {
 		return userList;
 	}
 	@GetMapping(value = "/get/user/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public User getUserById(@PathVariable String id) {
+	public User getUserById(@PathVariable("id") String id) {
 		User user=new User("Tom","Address 01");
 		return user;
 	}
