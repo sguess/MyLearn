@@ -1,35 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap.css"></link>
-<script src="webjars/jquery/3.1.1/jquery.js" type="text/javascript"></script>
-<script src="webjars/bootstrap/3.3.7/js/bootstrap.js"
-	type="text/javascript"></script>
-<script src="js/main.js" type="text/javascript"></script>
-<meta charset="UTF-8" />
-<title>Title</title>
+<script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="webjars/bootstrap-fileinput/js/fileinput.min.js"></script>
+<script src="webjars/bootstrap-fileinput/js/locales/zh.js"></script>
+
+<script src="webjars/bootstrap-fileinput/js/plugins/piexif.js"></script>
+<script src="webjars/bootstrap-fileinput/js/plugins/purify.js"></script>
+<script src="webjars/bootstrap-fileinput/js/plugins/sortable.js"></script>
+
+<link rel="stylesheet"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="webjars/bootstrap-fileinput/css/fileinput.min.css" />
+	<link rel="stylesheet"
+	href="webjars/bootstrap-fileinput/css/fileinput-rtl.css" />
+<title>Sguess Home page</title>
+<script type="text/javascript">
+	$(function() {
+		msg("Hello");
+		var control = $("#input1");
+		var uploadrul = "/uploadFile";
+		control.fileinput({
+			language : 'zh', 
+			uploadUrl : uploadrul,
+			allowedFileExtensions : [ 'png' ],
+			showUpload : true, 
+			showCaption : false,
+			browseClass : "btn btn-primary",     
+			dropZoneEnabled : true,
+			minImageWidth: 50, 
+			minImageHeight: 50,
+			maxImageWidth: 100,
+			maxImageHeight: 100,
+			maxFileSize: 0,
+			//minFileCount: 0,
+			maxFileCount : 100,
+			enctype : 'multipart/form-data',
+			validateInitialCount : true,
+			previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
+			msgFilesTooMany : "Upload too many files",
+		});
+		
+		$("#txt_file").on("fileuploaded",
+				function(event, data, previewId, index) {
+				});
+	});
+</script>
 </head>
 <body>
-	<div class="form-group">
-		<div class="form-group">
-			<input type="file" name="filename" id="fileName" accept=".xls,.xlsx"
-				style="display: none;" />
-		</div>
-		<div class="form-group" styple="margine-left:40px">
-			<label for="uplaod" class="control-label label-nonebold">Upload</label>
-			<div class="input-group">
-				<input type="text" class="form-control" id="uploadFile" /> <span
-					class="input-group-btn">
-					<button class="btn" type="button" id="browse">Browse</button>
-				</span>
-			</div>
-			<div>
-				<button type="button" class="btn text-white" id="upload"
-					name="uplaod">Upload</button>
-			</div>
-		</div>
+	<div class="row">
+		 <label class="control-label">Select
+			File</label> <input id="input1" type="file" class="file" />
 	</div>
-	<p th:text="'Hello, ' + ${name} + '!'" />
-
 </body>
 </html>
