@@ -16,6 +16,17 @@ public class HomeCtrl {
 	public String fileinput() {
 		return "pages/fileinput";
 	}
+
+	@RequestMapping("/fileinput2")
+	public String fileinput2() {
+		return "pages/fileinput2";
+	}
+
+	@RequestMapping("/fileinput3")
+	public String fileinput3() {
+		return "pages/fileinput3";
+	}
+
 	@RequestMapping("/fileinput4")
 	public String fileinput4() {
 		return "pages/fileinput4";

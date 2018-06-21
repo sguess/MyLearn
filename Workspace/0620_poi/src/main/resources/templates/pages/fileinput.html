@@ -14,45 +14,57 @@
 	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
 <link rel="stylesheet"
 	href="webjars/bootstrap-fileinput/css/fileinput.min.css" />
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="webjars/bootstrap-fileinput/css/fileinput-rtl.css" />
 <title>Sguess Home page</title>
 <script type="text/javascript">
 	$(function() {
-		msg("Hello");
 		var control = $("#input1");
 		var uploadrul = "/uploadFile";
 		control.fileinput({
-			language : 'zh', //设置语言
-			uploadUrl : uploadrul, //上传的地址
-			allowedFileExtensions : [ 'png' ],//接收的文件后缀
-			showUpload : true, //显示批量上传按钮
-			showCaption : false,//是否显示标题
-			browseClass : "btn btn-primary", //按钮样式     
-			dropZoneEnabled : true,//是否显示拖拽区域
-			minImageWidth: 50, //图片的最小宽度
-			minImageHeight: 50,//图片的最小高度
-			maxImageWidth: 100,//图片的最大宽度
-			maxImageHeight: 100,//图片的最大高度
-			maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
+			language : 'zh',
+			uploadUrl : uploadrul,
+			allowedFileExtensions : [ 'png' ],
+			showUpload : true,
+			showCaption : false,
+			browseClass : "btn btn-primary",
+			dropZoneEnabled : true,
+			minImageWidth : 50,
+			minImageHeight : 50,
+			maxImageWidth : 100,
+			maxImageHeight : 100,
+			maxFileSize : 0,
 			//minFileCount: 0,
 			maxFileCount : 100,
 			enctype : 'multipart/form-data',
 			validateInitialCount : true,
-			previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
-			msgFilesTooMany : "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+			previewFileIcon : "",
+			msgFilesTooMany : "Upload too many files"
 		});
-		//导入文件上传完成之后的事件
-		$("#txt_file").on("fileuploaded",
+
+		$("#input1").on("fileuploaded",
 				function(event, data, previewId, index) {
+					window.alert(5 + 6);
 				});
 	});
 </script>
 </head>
 <body>
 	<div class="row">
-		 <label class="control-label">Select
-			File</label> <input id="input1" type="file" class="file" />
+		<label class="control-label">Select File 1</label> <input
+			id="input-b1" name="input-b1" type="file" class="file" />
 	</div>
+	<script>
+		$(document).on('ready', function() {
+			$("#input-b1").fileinput({
+				language : 'zh',
+				showUpload : false,
+				dropZoneEnabled : false,
+				maxFileCount : 2,
+				mainClass : "input-group-lg"
+				uploadUrl: '/uploadFile'
+			});
+		});
+	</script>
 </body>
 </html>
