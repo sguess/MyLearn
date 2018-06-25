@@ -25,7 +25,7 @@ public class MailService {
 		properties.put("mail.smtp.timeout", 10000);
 //		sender.setJavaMailProperties(properties);
 		sender.setHost("smtp.sina.com");
-//		sender.setPort(25);
+		sender.setPort(25);
 		sender.setSession(Session.getInstance(properties));
 		sender.setUsername("sguess@sina.com");
 		sender.setPassword("");
