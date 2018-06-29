@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.sguess.entity.Bean;
 
 @Repository
-public interface BeanRepostiry extends JpaRepository<Bean,Integer>{
+public interface BeanRepository extends JpaRepository<Bean,Integer>{
 
 }
