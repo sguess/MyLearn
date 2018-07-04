@@ -7,10 +7,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OutputService {
-	private Logger LOG = Logger.getLogger(OutputService.class);
-	@PostConstruct
-	public void printLog() {
-		LOG.info("--------------org.apache.log4j.Logger");
-	}
+    private Logger LOG = Logger.getLogger(OutputService.class);
+
+    @PostConstruct
+    public void printLog() {
+        LOG.info("--------------org.apache.log4j.Logger");
+    }
 
 }

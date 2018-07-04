@@ -3,31 +3,32 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/layouts/layout}">
 <th:block layout:fragment="content">
-	<script>
-	function getValidationDetail(){
-		$.ajax({
-			url : "/getValidationResult",
-			async : false,
-			method:'GET',
-			dataType : 'json',
-			success : function(data) {
-				var aa = data.length;
-				for(var i=0;i<aa;i++){
-					$("#resultList").append(data[i].id);
-				} 
-			},
-			error : function(data) {
-				alert("error occur when retrive result");
-			}});
-	}
-	</script>
-	<body>
-		<h1><span class="label label-default">Welcome to validation result Page</span></h1>
-		<div class="form-group">
-	       <button onclick="getValidationDetail()" class="btn btn-primary">Query</button>
-	    </div>
-	    <div id="resultList">
-	    </div>
-	</body>
+    <script>
+        function getValidationDetail() {
+            $.ajax({
+                url: "/getValidationResult",
+                async: false,
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var aa = data.length;
+                    for (var i = 0; i < aa; i++) {
+                        $("#resultList").append(data[i].id);
+                    }
+                },
+                error: function (data) {
+                    alert("error occur when retrive result");
+                }
+            });
+        }
+    </script>
+    <body>
+    <h1><span class="label label-default">Welcome to validation result Page</span></h1>
+    <div class="form-group">
+        <button onclick="getValidationDetail()" class="btn btn-primary">Query</button>
+    </div>
+    <div id="resultList">
+    </div>
+    </body>
 </th:block>
 </html>

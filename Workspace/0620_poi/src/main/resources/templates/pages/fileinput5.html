@@ -1,136 +1,136 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<script src="webjars/jquery/3.1.1/jquery.min.js"></script>
-<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="webjars/bootstrap-fileinput/js/fileinput.min.js"></script>
-<script src="webjars/bootstrap-fileinput/js/locales/zh.js"></script>
+    <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="webjars/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script src="webjars/bootstrap-fileinput/js/locales/zh.js"></script>
 
-<script src="webjars/bootstrap-fileinput/js/plugins/piexif.js"></script>
-<script src="webjars/bootstrap-fileinput/js/plugins/purify.js"></script>
-<script src="webjars/bootstrap-fileinput/js/plugins/sortable.js"></script>
+    <script src="webjars/bootstrap-fileinput/js/plugins/piexif.js"></script>
+    <script src="webjars/bootstrap-fileinput/js/plugins/purify.js"></script>
+    <script src="webjars/bootstrap-fileinput/js/plugins/sortable.js"></script>
 
-<link rel="stylesheet"
-	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="webjars/bootstrap-fileinput/css/fileinput.min.css" />
-<link rel="stylesheet"
-	href="webjars/bootstrap-fileinput/css/fileinput-rtl.css" />
-<title>Sguess Home page</title>
-<script type="text/javascript">
-	$(function() {
+    <link rel="stylesheet"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          href="webjars/bootstrap-fileinput/css/fileinput.min.css"/>
+    <link rel="stylesheet"
+          href="webjars/bootstrap-fileinput/css/fileinput-rtl.css"/>
+    <title>Sguess Home page</title>
+    <script type="text/javascript">
+        $(function () {
 
-		var control = $("#input1");
-		var uploadrul = "/uploadFile";
-		control.fileinput({
-			language : 'zh',
-			uploadUrl : uploadrul,
-			allowedFileExtensions : [ 'png' ],
-			showUpload : true,
-			showCaption : false,
-			browseClass : "btn btn-primary",
-			dropZoneEnabled : true,
-			minImageWidth : 50,
-			minImageHeight : 50,
-			maxImageWidth : 100,
-			maxImageHeight : 100,
-			maxFileSize : 0,
-			//minFileCount: 0,
-			maxFileCount : 100,
-			enctype : 'multipart/form-data',
-			validateInitialCount : true,
-			previewFileIcon : "",
-			msgFilesTooMany : "Upload too many files"
-		});
+            var control = $("#input1");
+            var uploadrul = "/uploadFile";
+            control.fileinput({
+                language: 'zh',
+                uploadUrl: uploadrul,
+                allowedFileExtensions: ['png'],
+                showUpload: true,
+                showCaption: false,
+                browseClass: "btn btn-primary",
+                dropZoneEnabled: true,
+                minImageWidth: 50,
+                minImageHeight: 50,
+                maxImageWidth: 100,
+                maxImageHeight: 100,
+                maxFileSize: 0,
+                //minFileCount: 0,
+                maxFileCount: 100,
+                enctype: 'multipart/form-data',
+                validateInitialCount: true,
+                previewFileIcon: "",
+                msgFilesTooMany: "Upload too many files"
+            });
 
-		$("#input1").on("fileuploaded",
-				function(event, data, previewId, index) {
-					window.alert(5 + 6);
-				});
-	});
-</script>
+            $("#input1").on("fileuploaded",
+                function (event, data, previewId, index) {
+                    window.alert(5 + 6);
+                });
+        });
+    </script>
 </head>
 <body>
-	<div class="row">
-		<label class="control-label">Select File 1</label> <input
-			id="input-b1" name="input-b1" type="file" class="file"/>
-	</div>
-	<div class="row">
-		<label class="control-label">Select File 2</label> <input
-			id="input-b2" name="input-b2" type="file" class="file"
-			data-show-preview="false"/>
-	</div>
-	<div class="row">
-		<label class="control-label">Select File 3</label><input id="input-b3"
-			name="input-b3[]" type="file" class="file" multiple
-			data-show-upload="false" data-show-caption="true"
-			data-msg-placeholder="Select {files} for upload...">
-	</div>
-	<div class="row">
-		<label class="control-label">Select File 4</label> <label
-			for="input-b4a">Readonly Input</label> <input id="input-b4a"
-			name="input-b4a" type="file" class="file" readonly="true"> <br>
-		<label for="input-b4b">Disabled Input</label> <input id="input-b4b"
-			name="input-b4b" type="file" class="file" disabled="true">
-	</div>
-	<div class="row">
-		<label class="control-label">Select File 5</label> <label
-			class="control-label">Select File</label> <input id="input-b5"
-			name="input-b5[]" type="file" multiple>
-		<script>
-			$(document).on('ready', function() {
-				$("#input-b5").fileinput({
-					showCaption : false,
-					dropZoneEnabled : false
-				});
-			});
-		</script>
-	</div>
-	<div class="row">
-		<label class="control-label">Select File 6</label>
-		<div class="file-loading">
-			<input id="input-b6" name="input-b6[]" type="file" multiple>
-		</div>
-		<script>
-			$(document).on('ready', function() {
-				$("#input-b6").fileinput({
-					showUpload : false,
-					dropZoneEnabled : false,
-					maxFileCount : 10,
-					mainClass : "input-group-lg"
-				});
-			});
-		</script>
-	</div>
-	<div class="row">
-		<label class="control-label">Select File 7</label>
-		<div class="file-loading">
-			<input id="input-b7" name="input-b7[]" multiple type="file"
-				class="file" data-allowed-file-extensions='["csv", "txt"]'>
-		</div>
-	</div>
-	<div class="row">
-		<label class="control-label">Select File 8</label>
-		<link href="/path/to/css//css/fileinput.min.css" rel="stylesheet">
-		<link href="/path/to/css//css/fileinput-rtl.min.css" rel="stylesheet">
-		<div dir=rtl class="file-loading">
-			<!-- note the direction if you want to display file-loading indicator -->
-			<!-- note that your input must just set the `rtl` data property of the plugin or in your javascript code -->
-			<input id="input-b8" name="input-b8[]" multiple type="file"'>
-		</div>
-		<script>
-			$(document).on('ready', function() {
-				$("#input-b8").fileinput({
-					rtl : true,
-					dropZoneEnabled : false,
-					allowedFileExtensions : [ "jpg", "png", "gif" ]
-				});
-			});
-		</script>
-	</div>
-	<div class="row">
-		<label class="control-label">Select File 1</label> <input id="input1"
-			type="file" class="file" />
-	</div>
+<div class="row">
+    <label class="control-label">Select File 1</label> <input
+        id="input-b1" name="input-b1" type="file" class="file"/>
+</div>
+<div class="row">
+    <label class="control-label">Select File 2</label> <input
+        id="input-b2" name="input-b2" type="file" class="file"
+        data-show-preview="false"/>
+</div>
+<div class="row">
+    <label class="control-label">Select File 3</label><input id="input-b3"
+                                                             name="input-b3[]" type="file" class="file" multiple
+                                                             data-show-upload="false" data-show-caption="true"
+                                                             data-msg-placeholder="Select {files} for upload...">
+</div>
+<div class="row">
+    <label class="control-label">Select File 4</label> <label
+        for="input-b4a">Readonly Input</label> <input id="input-b4a"
+                                                      name="input-b4a" type="file" class="file" readonly="true"> <br>
+    <label for="input-b4b">Disabled Input</label> <input id="input-b4b"
+                                                         name="input-b4b" type="file" class="file" disabled="true">
+</div>
+<div class="row">
+    <label class="control-label">Select File 5</label> <label
+        class="control-label">Select File</label> <input id="input-b5"
+                                                         name="input-b5[]" type="file" multiple>
+    <script>
+        $(document).on('ready', function () {
+            $("#input-b5").fileinput({
+                showCaption: false,
+                dropZoneEnabled: false
+            });
+        });
+    </script>
+</div>
+<div class="row">
+    <label class="control-label">Select File 6</label>
+    <div class="file-loading">
+        <input id="input-b6" name="input-b6[]" type="file" multiple>
+    </div>
+    <script>
+        $(document).on('ready', function () {
+            $("#input-b6").fileinput({
+                showUpload: false,
+                dropZoneEnabled: false,
+                maxFileCount: 10,
+                mainClass: "input-group-lg"
+            });
+        });
+    </script>
+</div>
+<div class="row">
+    <label class="control-label">Select File 7</label>
+    <div class="file-loading">
+        <input id="input-b7" name="input-b7[]" multiple type="file"
+               class="file" data-allowed-file-extensions='["csv", "txt"]'>
+    </div>
+</div>
+<div class="row">
+    <label class="control-label">Select File 8</label>
+    <link href="/path/to/css//css/fileinput.min.css" rel="stylesheet">
+    <link href="/path/to/css//css/fileinput-rtl.min.css" rel="stylesheet">
+    <div dir=rtl class="file-loading">
+        <!-- note the direction if you want to display file-loading indicator -->
+        <!-- note that your input must just set the `rtl` data property of the plugin or in your javascript code -->
+        <input id="input-b8" name="input-b8[]" multiple type="file"'>
+    </div>
+    <script>
+        $(document).on('ready', function () {
+            $("#input-b8").fileinput({
+                rtl: true,
+                dropZoneEnabled: false,
+                allowedFileExtensions: ["jpg", "png", "gif"]
+            });
+        });
+    </script>
+</div>
+<div class="row">
+    <label class="control-label">Select File 1</label> <input id="input1"
+                                                              type="file" class="file"/>
+</div>
 </body>
 </html>

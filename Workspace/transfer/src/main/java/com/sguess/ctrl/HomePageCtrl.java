@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomePageCtrl {
 
-	private static final Logger LOG = LoggerFactory.getLogger(HomePageCtrl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(HomePageCtrl.class);
 
-	@RequestMapping(value = "/")
-	public String homePage() {
-		LOG.info("Open the home page.");
-		return "index";
-	}
+    @RequestMapping(value = "/")
+    public String homePage() {
+        LOG.info("Open the home page.");
+        return "index";
+    }
 }

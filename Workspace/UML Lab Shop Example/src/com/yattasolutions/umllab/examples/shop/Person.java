@@ -7,46 +7,46 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public class Person implements Human {
-	private Address address;
+    private Address address;
 
-	private String name;
+    private String name;
 
-	private int age;
+    private int age;
 
-	private String gender;
+    private String gender;
 
-	@Embedded
-	@AttributeOverride(name = "name", column = @Column(name = "ADDR_NAME"))
-	public Address getAddress() {
-		return this.address;
-	}
+    @Embedded
+    @AttributeOverride(name = "name", column = @Column(name = "ADDR_NAME"))
+    public Address getAddress() {
+        return this.address;
+    }
 
-	public int getAge() {
-		return this.age;
-	}
+    public int getAge() {
+        return this.age;
+    }
 
-	public String getGender() {
-		return this.gender;
-	}
+    public String getGender() {
+        return this.gender;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
-	public void setAge(int value) {
-		this.age = value;
-	}
+    public void setAge(int value) {
+        this.age = value;
+    }
 
-	public void setGender(String value) {
-		this.gender = value;
-	}
+    public void setGender(String value) {
+        this.gender = value;
+    }
 
-	public void setName(String value) {
-		this.name = value;
-	}
+    public void setName(String value) {
+        this.name = value;
+    }
 
 }

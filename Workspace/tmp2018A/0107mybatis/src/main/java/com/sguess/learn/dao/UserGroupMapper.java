@@ -6,6 +6,6 @@ import com.sguess.learn.bean.UserGroup;
 
 @Mapper
 public interface UserGroupMapper {
-	
-	
+
+
 }

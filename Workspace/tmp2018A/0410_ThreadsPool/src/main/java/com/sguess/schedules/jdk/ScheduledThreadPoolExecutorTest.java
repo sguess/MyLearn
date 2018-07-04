@@ -19,16 +19,16 @@ public class ScheduledThreadPoolExecutorTest {
 	}
 
 	/**
-	 * Thread-->Thu Jun 14 15:22:23 CST 2018 
-	 * Thread-->Thu Jun 14 15:22:24 CST 2018
-	 * Thread-->Thu Jun 14 15:22:25 CST 2018
-	 * Thread-->Thu Jun 14 15:22:26 CST 2018
-	 * Thread-->Thu Jun 14 15:22:27 CST 2018
-	 * Thread-->Thu Jun 14 15:22:28 CST 2018
-	 * Thread-->Thu Jun 14 15:22:29 CST 2018 
-	 * Thread-->Thu Jun 14 15:22:30 CST 2018
-	 * 时间是连续的
-	 */
+     * Thread-->Thu Jun 14 15:22:23 CST 2018
+     * Thread-->Thu Jun 14 15:22:24 CST 2018
+     * Thread-->Thu Jun 14 15:22:25 CST 2018
+     * Thread-->Thu Jun 14 15:22:26 CST 2018
+     * Thread-->Thu Jun 14 15:22:27 CST 2018
+     * Thread-->Thu Jun 14 15:22:28 CST 2018
+     * Thread-->Thu Jun 14 15:22:29 CST 2018
+     * Thread-->Thu Jun 14 15:22:30 CST 2018
+     * 时间是连续的
+     */
 	public void test_corePoolSize_is_10_and_AtFixedRate() {
 		int corePoolSize = 10;
 		ScheduledThreadPoolExecutor schedulers = new ScheduledThreadPoolExecutor(corePoolSize);
@@ -45,16 +45,15 @@ public class ScheduledThreadPoolExecutorTest {
 		}, initialDelay, period, unit);
 	}
 /**
- * 
-Thread-->Thu Jun 14 15:23:37 CST 2018
-Thread-->Thu Jun 14 15:23:38 CST 2018
-Thread-->Thu Jun 14 15:23:39 CST 2018
-Thread-->Thu Jun 14 15:23:40 CST 2018
-Thread-->Thu Jun 14 15:23:41 CST 2018
-Thread-->Thu Jun 14 15:23:42 CST 2018
-Thread-->Thu Jun 14 15:23:43 CST 2018
-Thread-->Thu Jun 14 15:23:44 CST 2018
-时间依然是连续的. 
+ * Thread-->Thu Jun 14 15:23:37 CST 2018
+ * Thread-->Thu Jun 14 15:23:38 CST 2018
+ * Thread-->Thu Jun 14 15:23:39 CST 2018
+ * Thread-->Thu Jun 14 15:23:40 CST 2018
+ * Thread-->Thu Jun 14 15:23:41 CST 2018
+ * Thread-->Thu Jun 14 15:23:42 CST 2018
+ * Thread-->Thu Jun 14 15:23:43 CST 2018
+ * Thread-->Thu Jun 14 15:23:44 CST 2018
+ * 时间依然是连续的.
  */
 	public void test_corePoolSize_is_1_and_AtFixedRate() {
 		int corePoolSize = 1;
@@ -75,14 +74,13 @@ Thread-->Thu Jun 14 15:23:44 CST 2018
 		// schedulers.scheduleWithFixedDelay(command, initialDelay, delay, unit);
 	}
 /**
- *
-Thread-->Thu Jun 14 15:24:43 CST 2018
-Thread-->Thu Jun 14 15:24:45 CST 2018
-Thread-->Thu Jun 14 15:24:47 CST 2018
-Thread-->Thu Jun 14 15:24:49 CST 2018
-Thread-->Thu Jun 14 15:24:51 CST 2018
-Thread-->Thu Jun 14 15:24:53 CST 2018
-时间相隔2秒, 才会进行下一个
+ * Thread-->Thu Jun 14 15:24:43 CST 2018
+ * Thread-->Thu Jun 14 15:24:45 CST 2018
+ * Thread-->Thu Jun 14 15:24:47 CST 2018
+ * Thread-->Thu Jun 14 15:24:49 CST 2018
+ * Thread-->Thu Jun 14 15:24:51 CST 2018
+ * Thread-->Thu Jun 14 15:24:53 CST 2018
+ * 时间相隔2秒, 才会进行下一个
  */
 	public void test_corePoolSize_is_10_and_WithFixedDelay() {
 		int corePoolSize = 10;

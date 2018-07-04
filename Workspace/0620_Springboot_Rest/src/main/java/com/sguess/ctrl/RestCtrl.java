@@ -13,20 +13,20 @@ import com.sguess.bean.Ele;
 @RequestMapping(value = "/rest/")
 public class RestCtrl {
 
-	@GetMapping(value = "get")
-	public String funGet() {
-		return "getRst";
-	}
+    @GetMapping(value = "get")
+    public String funGet() {
+        return "getRst";
+    }
 
-	@GetMapping(value = "getEle/css/{css}/str/{str}")
-	public Ele funPath(@PathVariable String css, @PathVariable String str) {
-		return new Ele(css, str);
-	}
+    @GetMapping(value = "getEle/css/{css}/str/{str}")
+    public Ele funPath(@PathVariable String css, @PathVariable String str) {
+        return new Ele(css, str);
+    }
 
-	@PostMapping(value = "postObj")
-	public Ele postObj(@RequestBody Ele ele) {
-		ele.setCss("css-->" + ele.getCss());
-		ele.setStr("str-->" + ele.getStr());
-		return ele;
-	}
+    @PostMapping(value = "postObj")
+    public Ele postObj(@RequestBody Ele ele) {
+        ele.setCss("css-->" + ele.getCss());
+        ele.setStr("str-->" + ele.getStr());
+        return ele;
+    }
 }

@@ -16,19 +16,19 @@ import com.sguess.learn.test.MyOrder;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MyCustomerRepostoryTest {
-	@Autowired
-	private MyCustomerRepostory dao;
+    @Autowired
+    private MyCustomerRepostory dao;
 
-	@Test
-	public void test() {
-		MyCustomer cus = new MyCustomer("Tom");
-		List<MyOrder> orderList = new ArrayList<MyOrder>();
-		orderList.add(new MyOrder("01"));
-		orderList.add(new MyOrder("02"));
-		orderList.add(new MyOrder("03"));
-		orderList.add(new MyOrder("04"));
-		cus.setOrders(orderList);
-		dao.save(cus);
+    @Test
+    public void test() {
+        MyCustomer cus = new MyCustomer("Tom");
+        List<MyOrder> orderList = new ArrayList<MyOrder>();
+        orderList.add(new MyOrder("01"));
+        orderList.add(new MyOrder("02"));
+        orderList.add(new MyOrder("03"));
+        orderList.add(new MyOrder("04"));
+        cus.setOrders(orderList);
+        dao.save(cus);
 
-	}
+    }
 }

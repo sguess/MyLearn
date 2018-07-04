@@ -15,23 +15,23 @@ import com.sguess.service.TestService;
 @RestController
 public class TestCtrl {
 
-	@Autowired
-	public TestService service;
+    @Autowired
+    public TestService service;
 
-	@RequestMapping(value = "/test")
-	public List<Bean> testAll() {
-		List<Bean> list = service.getData();
-		System.out.println(list.size());
+    @RequestMapping(value = "/test")
+    public List<Bean> testAll() {
+        List<Bean> list = service.getData();
+        System.out.println(list.size());
 //		return Arrays.toString(list.toArray());
-		return list;
-	}
+        return list;
+    }
 
-	@GetMapping(value = "/insert/{name}")
-	public String insert(@PathVariable("name") String name) {
-		Bean bean=new Bean(		);
-		bean.setName1(name+",1");
-		bean.setName2(name+",2");
-		return service.insertBean(bean).toString();
-	}
+    @GetMapping(value = "/insert/{name}")
+    public String insert(@PathVariable("name") String name) {
+        Bean bean = new Bean();
+        bean.setName1(name + ",1");
+        bean.setName2(name + ",2");
+        return service.insertBean(bean).toString();
+    }
 
 }

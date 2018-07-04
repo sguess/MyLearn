@@ -9,16 +9,17 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TaskService {
-	@Autowired
-	private ApplicationContext app;
-	
-	@PostConstruct
-	public void init() {
-		fun01();
-	}
-	@Scheduled(fixedDelay=1000)
-	public void fun01() {
-		OneTask task=app.getBean(OneTask.class);
-		task.output();
-	}
+    @Autowired
+    private ApplicationContext app;
+
+    @PostConstruct
+    public void init() {
+        fun01();
+    }
+
+    @Scheduled(fixedDelay = 1000)
+    public void fun01() {
+        OneTask task = app.getBean(OneTask.class);
+        task.output();
+    }
 }

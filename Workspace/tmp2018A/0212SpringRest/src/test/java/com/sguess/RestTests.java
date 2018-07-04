@@ -11,21 +11,22 @@ import org.springframework.web.client.RestTemplate;
 //@SpringBootTest
 public class RestTests {
 
-	@Test
-	public void contextLoads() {
-		User user=this.fetchFacebookProfile(1);
-		System.out.println(user.toString());
-	}
+    @Test
+    public void contextLoads() {
+        User user = this.fetchFacebookProfile(1);
+        System.out.println(user.toString());
+    }
 
-	public User fetchFacebookProfile(int id) {
-		RestTemplate rest = new RestTemplate();
+    public User fetchFacebookProfile(int id) {
+        RestTemplate rest = new RestTemplate();
 //		return rest.getForObject("http://graph.facebook.com/{spitter}", Profile.class, id);
-		return rest.getForObject("http://localhost:8080/rest/get01/{id}", User.class, id);
-	}
-	@Test
-	public void funTmp() {
-		
-	}
-	
+        return rest.getForObject("http://localhost:8080/rest/get01/{id}", User.class, id);
+    }
+
+    @Test
+    public void funTmp() {
+
+    }
+
 
 }

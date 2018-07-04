@@ -10,8 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class ScreenCtrl {
 
-	@RequestMapping
-	public void homePage(ModelAndView view, HttpServletRequest request, HttpServletResponse response) {
-		
-	}
+    @RequestMapping
+    public void homePage(ModelAndView view, HttpServletRequest request, HttpServletResponse response) {
+
+    }
 }

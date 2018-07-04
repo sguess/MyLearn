@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <body>
 <!-- Navbar -->
 <div class="navbar navbar-inverse navbar-fixed-top"
@@ -10,53 +11,53 @@
                 <li th:classappend="${module == 'usermanagement' ? 'active' : ''}"><a href="#" th:href="usermanagement">user
                     management</a></li>
             </ul>
-           <!-- <ul class="nav navbar-nav">
-                <li class="dropdown" th:classappend="${module == 'dataManagement' ? 'active' : ''}">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Data Management<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" th:href="@{dataManagement}">Data Management</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#" th:href="@{downloadOverview}">Download Management</a></li>
-                        <li><a href="#" th:href="@{navigatorToCreatePlan}">Master Data maintence</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li><a href="#">||</a></li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li class="dropdown" th:classappend="${module == 'dataManagement' ? 'active' : ''}">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Stock Data<span class="caret"></span></a>
+            <!-- <ul class="nav navbar-nav">
+                 <li class="dropdown" th:classappend="${module == 'dataManagement' ? 'active' : ''}">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        aria-expanded="false">Data Management<span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                         <li><a href="#" th:href="@{dataManagement}">Data Management</a></li>
+                         <li role="separator" class="divider"></li>
+                         <li><a href="#" th:href="@{downloadOverview}">Download Management</a></li>
+                         <li><a href="#" th:href="@{navigatorToCreatePlan}">Master Data maintence</a></li>
+                     </ul>
+                 </li>
+             </ul>
+             <ul class="nav navbar-nav">
+                 <li><a href="#">||</a></li>
+             </ul>
+             <ul class="nav navbar-nav">
+                 <li class="dropdown" th:classappend="${module == 'dataManagement' ? 'active' : ''}">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        aria-expanded="false">Stock Data<span class="caret"></span></a>
 
-                    <ul class="dropdown-menu">
-                        <li><a href="stockData/dataViewer">数据总视图 Data Viewer</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="stockData/stockStatusData">实时数据下载 StatusData</a></li>
-                        <li><a href="stockData/stockHistoryData">历史数据下载 HistroyData</a></li>
-                        <li><a href="stockData/stockStatusDataUpdate">指定实时数据更新 StatusData</a></li>
-                        <li><a href="stockData/stockHistoryDataUpdate">指定历史数据更新 HistroyData</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li class="dropdown" th:classappend="${module == 'dataManagement' ? 'active' : ''}">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">System Configuration<span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                         <li><a href="stockData/dataViewer">数据总视图 Data Viewer</a></li>
+                         <li role="separator" class="divider"></li>
+                         <li><a href="stockData/stockStatusData">实时数据下载 StatusData</a></li>
+                         <li><a href="stockData/stockHistoryData">历史数据下载 HistroyData</a></li>
+                         <li><a href="stockData/stockStatusDataUpdate">指定实时数据更新 StatusData</a></li>
+                         <li><a href="stockData/stockHistoryDataUpdate">指定历史数据更新 HistroyData</a></li>
+                     </ul>
+                 </li>
+             </ul>
+             <ul class="nav navbar-nav">
+                 <li class="dropdown" th:classappend="${module == 'dataManagement' ? 'active' : ''}">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        aria-expanded="false">System Configuration<span class="caret"></span></a>
 
-                    <ul class="dropdown-menu">
-                        <li><a href="sysConf/tradeConf">Trading Setting 交易设置</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li class="dropdown" th:classappend="${module == 'dataManagement' ? 'active' : ''}">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Design<span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                         <li><a href="sysConf/tradeConf">Trading Setting 交易设置</a></li>
+                     </ul>
+                 </li>
+             </ul>
+             <ul class="nav navbar-nav">
+                 <li class="dropdown" th:classappend="${module == 'dataManagement' ? 'active' : ''}">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        aria-expanded="false">Design<span class="caret"></span></a>
 
-                </li>
-            </ul>-->
+                 </li>
+             </ul>-->
         </div>
     </div>
 </div>

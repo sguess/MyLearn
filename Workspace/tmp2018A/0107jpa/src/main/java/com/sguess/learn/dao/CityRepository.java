@@ -13,8 +13,8 @@ public interface CityRepository extends JpaRepository<City, Integer> {
     Page<City> findAll(Pageable pageable);
 
     City findByNameAndStateAllIgnoringCase(String name, String state);
-    
+
     @Query("Select name FROM city")
     List<City> queryAllCity();
-    
+
 }

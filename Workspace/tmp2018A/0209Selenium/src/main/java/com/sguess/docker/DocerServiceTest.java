@@ -12,19 +12,19 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class DocerServiceTest {
 
-	public static void main(String[] args) throws MalformedURLException {
-		DesiredCapabilities cap=DesiredCapabilities.chrome();
-		cap.setPlatform(Platform.ANY);
-		ChromeOptions chromeOptions=new ChromeOptions();
-		chromeOptions.addArguments("allow-running-insecure-content");
-		cap.setCapability(ChromeOptions.CAPABILITY,chromeOptions);
-		String url="http://192.168.1.70:4444/wd/hub";
-		RemoteWebDriver driver=(ChromeDriver) new RemoteWebDriver(new URL(url),cap);
-		driver.get("http://www.baidu.com");
-		String rst=driver.getScreenshotAs(OutputType.BASE64);
-		System.out.println(rst);
-		driver.close();
-	}
+    public static void main(String[] args) throws MalformedURLException {
+        DesiredCapabilities cap = DesiredCapabilities.chrome();
+        cap.setPlatform(Platform.ANY);
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("allow-running-insecure-content");
+        cap.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+        String url = "http://192.168.1.70:4444/wd/hub";
+        RemoteWebDriver driver = (ChromeDriver) new RemoteWebDriver(new URL(url), cap);
+        driver.get("http://www.baidu.com");
+        String rst = driver.getScreenshotAs(OutputType.BASE64);
+        System.out.println(rst);
+        driver.close();
+    }
 
 
 }

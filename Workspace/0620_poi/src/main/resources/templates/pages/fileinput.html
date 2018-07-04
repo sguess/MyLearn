@@ -1,70 +1,70 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<script src="webjars/jquery/3.1.1/jquery.min.js"></script>
-<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="webjars/bootstrap-fileinput/js/fileinput.min.js"></script>
-<script src="webjars/bootstrap-fileinput/js/locales/zh.js"></script>
+    <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="webjars/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script src="webjars/bootstrap-fileinput/js/locales/zh.js"></script>
 
-<script src="webjars/bootstrap-fileinput/js/plugins/piexif.js"></script>
-<script src="webjars/bootstrap-fileinput/js/plugins/purify.js"></script>
-<script src="webjars/bootstrap-fileinput/js/plugins/sortable.js"></script>
+    <script src="webjars/bootstrap-fileinput/js/plugins/piexif.js"></script>
+    <script src="webjars/bootstrap-fileinput/js/plugins/purify.js"></script>
+    <script src="webjars/bootstrap-fileinput/js/plugins/sortable.js"></script>
 
-<link rel="stylesheet"
-	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="webjars/bootstrap-fileinput/css/fileinput.min.css" />
-<link rel="stylesheet"
-	href="webjars/bootstrap-fileinput/css/fileinput-rtl.css" />
-<title>Sguess Home page</title>
-<script type="text/javascript">
-	$(function() {
-		var control = $("#input1");
-		var uploadrul = "/uploadFile";
-		control.fileinput({
-			language : 'zh',
-			uploadUrl : uploadrul,
-			allowedFileExtensions : [ 'png' ],
-			showUpload : true,
-			showCaption : false,
-			browseClass : "btn btn-primary",
-			dropZoneEnabled : true,
-			minImageWidth : 50,
-			minImageHeight : 50,
-			maxImageWidth : 100,
-			maxImageHeight : 100,
-			maxFileSize : 0,
-			//minFileCount: 0,
-			maxFileCount : 100,
-			enctype : 'multipart/form-data',
-			validateInitialCount : true,
-			previewFileIcon : "",
-			msgFilesTooMany : "Upload too many files"
-		});
+    <link rel="stylesheet"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          href="webjars/bootstrap-fileinput/css/fileinput.min.css"/>
+    <link rel="stylesheet"
+          href="webjars/bootstrap-fileinput/css/fileinput-rtl.css"/>
+    <title>Sguess Home page</title>
+    <script type="text/javascript">
+        $(function () {
+            var control = $("#input1");
+            var uploadrul = "/uploadFile";
+            control.fileinput({
+                language: 'zh',
+                uploadUrl: uploadrul,
+                allowedFileExtensions: ['png'],
+                showUpload: true,
+                showCaption: false,
+                browseClass: "btn btn-primary",
+                dropZoneEnabled: true,
+                minImageWidth: 50,
+                minImageHeight: 50,
+                maxImageWidth: 100,
+                maxImageHeight: 100,
+                maxFileSize: 0,
+                //minFileCount: 0,
+                maxFileCount: 100,
+                enctype: 'multipart/form-data',
+                validateInitialCount: true,
+                previewFileIcon: "",
+                msgFilesTooMany: "Upload too many files"
+            });
 
-		$("#input1").on("fileuploaded",
-				function(event, data, previewId, index) {
-					window.alert(5 + 6);
-				});
-	});
-</script>
+            $("#input1").on("fileuploaded",
+                function (event, data, previewId, index) {
+                    window.alert(5 + 6);
+                });
+        });
+    </script>
 </head>
 <body>
-	<div class="row">
-		<label class="control-label">Select File 1</label> <input
-			id="input-b1" name="input-b1" type="file" class="file" />
-	</div>
-	<script>
-		$(document).on('ready', function() {
-			$("#input-b1").fileinput({
-				language : 'zh',
-				showUpload : false,
-				dropZoneEnabled : false,
-				maxFileCount : 2,
-				mainClass : "input-group-lg"
-				uploadUrl: '/uploadFile'
-			});
-		});
-	</script>
+<div class="row">
+    <label class="control-label">Select File 1</label> <input
+        id="input-b1" name="input-b1" type="file" class="file"/>
+</div>
+<script>
+    $(document).on('ready', function () {
+        $("#input-b1").fileinput({
+            language: 'zh',
+            showUpload: false,
+            dropZoneEnabled: false,
+            maxFileCount: 2,
+            mainClass: "input-group-lg"
+            uploadUrl: '/uploadFile'
+        });
+    });
+</script>
 </body>
 </html>

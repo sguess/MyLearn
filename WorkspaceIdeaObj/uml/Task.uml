@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>javafx.concurrent.Task</OriginalElement>
+  <nodes>
+    <node x="139.78125" y="0.0">java.lang.FunctionalInterface</node>
+    <node x="93.0" y="160.0">java.util.concurrent.RunnableFuture</node>
+    <node x="0.0" y="240.0">javafx.concurrent.Worker</node>
+    <node x="123.78125" y="320.0">javafx.concurrent.Task</node>
+    <node x="63.78125" y="80.0">java.util.concurrent.Future</node>
+    <node x="106.0" y="240.0">java.util.concurrent.FutureTask</node>
+    <node x="232.0" y="240.0">javafx.event.EventTarget</node>
+    <node x="165.78125" y="80.0">java.lang.Runnable</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.lang.Runnable" target="java.lang.FunctionalInterface">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.RunnableFuture" target="java.lang.Runnable">
+      <point x="33.0" y="-15.0" />
+      <point x="192.0" y="135.0" />
+      <point x="214.78125" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="javafx.concurrent.Task" target="javafx.concurrent.Worker">
+      <point x="-24.0" y="-15.0" />
+      <point x="135.78125" y="295.0" />
+      <point x="43.0" y="295.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="javafx.concurrent.Task" target="javafx.event.EventTarget">
+      <point x="24.0" y="-15.0" />
+      <point x="183.78125" y="295.0" />
+      <point x="287.5" y="295.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="javafx.concurrent.Task" target="java.util.concurrent.FutureTask">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.FutureTask" target="java.util.concurrent.RunnableFuture">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.util.concurrent.RunnableFuture" target="java.util.concurrent.Future">
+      <point x="-33.0" y="-15.0" />
+      <point x="126.0" y="135.0" />
+      <point x="104.78125" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="171.5" y="175.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

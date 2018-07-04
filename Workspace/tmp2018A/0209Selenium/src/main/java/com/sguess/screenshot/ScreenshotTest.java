@@ -11,15 +11,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ScreenshotTest {
 
-	public static void main(String[] args) throws IOException {
-		ChromeDriver driver = new ChromeDriver();
-		driver.get("http://www.baidu.com");
-		driver.manage().window().maximize();
-		// File file=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		File file = driver.getScreenshotAs(OutputType.FILE);
-		File destFile = new File("out/destFileName.png");
-		FileUtils.copyFile(file, destFile);
-		driver.quit();
-	}
+    public static void main(String[] args) throws IOException {
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("http://www.baidu.com");
+        driver.manage().window().maximize();
+        // File file=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        File file = driver.getScreenshotAs(OutputType.FILE);
+        File destFile = new File("out/destFileName.png");
+        FileUtils.copyFile(file, destFile);
+        driver.quit();
+    }
 
 }

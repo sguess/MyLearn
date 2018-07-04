@@ -8,14 +8,13 @@ import javax.persistence.OneToMany;
 
 //@Entity
 public class Customer01 {
-	
-	
-	
-	private Set<Order01> orders01;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-	public Set<Order01> getOrders() {
-		return orders01;
-	}
+
+    private Set<Order01> orders01;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+    public Set<Order01> getOrders() {
+        return orders01;
+    }
 
 }

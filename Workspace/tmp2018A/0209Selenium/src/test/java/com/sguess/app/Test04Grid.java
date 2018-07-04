@@ -20,33 +20,37 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class Test04Grid {
 
-	public void exec() throws InterruptedException, IOException {
-		DesiredCapabilities cap=DesiredCapabilities.chrome();
-		cap.setPlatform(Platform.ANY);
-		String urlStr="http://localhost:4444/wd/hub";
-		RemoteWebDriver driver=new RemoteWebDriver(new URL(urlStr),cap);
-		driver.get("http://www.baidu.com");
-		driver.findElement(By.cssSelector("#kw")).sendKeys("hello");
-		driver.findElement(By.cssSelector("#su")).click();
-		
-		createShot(driver);
-		String url="https://acme-v8customer04.kronos.net/wfc/logon";
-		driver.get(url);
-		Thread.sleep(3*1000);
-		driver.findElement(By.cssSelector("#username")).sendKeys("superuser");;
-		driver.findElement(By.cssSelector("#passInput")).sendKeys("kronites");;
-		driver.findElement(By.cssSelector("#loginSubmit")).click();
-		createShot(driver);
-		System.out.println("--------------->End");
-		driver.quit();
-	}
-	private void createShot(RemoteWebDriver driver) throws IOException, InterruptedException {
-		Thread.sleep(1000*3);
-		File file=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		System.out.println("--------------->File:"+file.getAbsolutePath());
-		FileUtils.copyFile(file, new File("C:\\Selenium\\screenshot\\"+file.getName()));
-	}
-	public static void main(String[] args) throws InterruptedException, IOException {
-		new Test04Grid().exec();
-	}
+    public void exec() throws InterruptedException, IOException {
+        DesiredCapabilities cap = DesiredCapabilities.chrome();
+        cap.setPlatform(Platform.ANY);
+        String urlStr = "http://localhost:4444/wd/hub";
+        RemoteWebDriver driver = new RemoteWebDriver(new URL(urlStr), cap);
+        driver.get("http://www.baidu.com");
+        driver.findElement(By.cssSelector("#kw")).sendKeys("hello");
+        driver.findElement(By.cssSelector("#su")).click();
+
+        createShot(driver);
+        String url = "https://acme-v8customer04.kronos.net/wfc/logon";
+        driver.get(url);
+        Thread.sleep(3 * 1000);
+        driver.findElement(By.cssSelector("#username")).sendKeys("superuser");
+        ;
+        driver.findElement(By.cssSelector("#passInput")).sendKeys("kronites");
+        ;
+        driver.findElement(By.cssSelector("#loginSubmit")).click();
+        createShot(driver);
+        System.out.println("--------------->End");
+        driver.quit();
+    }
+
+    private void createShot(RemoteWebDriver driver) throws IOException, InterruptedException {
+        Thread.sleep(1000 * 3);
+        File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        System.out.println("--------------->File:" + file.getAbsolutePath());
+        FileUtils.copyFile(file, new File("C:\\Selenium\\screenshot\\" + file.getName()));
+    }
+
+    public static void main(String[] args) throws InterruptedException, IOException {
+        new Test04Grid().exec();
+    }
 }

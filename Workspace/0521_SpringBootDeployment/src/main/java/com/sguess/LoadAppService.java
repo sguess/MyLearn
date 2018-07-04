@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class LoadAppService {
-	@Value("${test.value}")
-	public String testValue;
+    @Value("${test.value}")
+    public String testValue;
 
-	@RequestMapping("/")
-	public String getValue() {
-		System.out.println("-------------" + testValue);
-		return testValue;
-	}
+    @RequestMapping("/")
+    public String getValue() {
+        System.out.println("-------------" + testValue);
+        return testValue;
+    }
 }

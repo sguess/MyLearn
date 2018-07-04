@@ -11,8 +11,8 @@ import com.sguess.beans.Excel;
 
 public interface IPoiService {
 
-	List<Excel> parseFile(MultipartFile file) throws IOException;
+    List<Excel> parseFile(MultipartFile file) throws IOException;
 
-	List<Excel> parseFile(File file) throws InvalidFormatException, IOException;
+    List<Excel> parseFile(File file) throws InvalidFormatException, IOException;
 
 }

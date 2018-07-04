@@ -6,6 +6,6 @@ import com.sguess.learn.bean.Street;
 
 
 //public interface StreetRepository{
-public interface StreetRepository extends JpaRepository<Street, Integer>{
+public interface StreetRepository extends JpaRepository<Street, Integer> {
 
 }

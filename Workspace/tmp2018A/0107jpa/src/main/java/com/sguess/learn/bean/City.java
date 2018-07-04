@@ -11,70 +11,70 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Entity(name = "city")
 public class City implements Serializable {
 
-	@Id
-	@GeneratedValue
-	private Long id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-	@Column(nullable = false)
-	private String name;
+    @Column(nullable = false)
+    private String name;
 
-	@Column(nullable = false)
-	private String state;
-	
-	@OneToMany(cascade = {CascadeType.ALL})
-	private List<Street> streets;
-	
-	@OneToOne(cascade = {CascadeType.ALL})
-	private Mayor mayor;
+    @Column(nullable = false)
+    private String state;
 
-	protected City() {
+    @OneToMany(cascade = {CascadeType.ALL})
+    private List<Street> streets;
 
-	}
+    @OneToOne(cascade = {CascadeType.ALL})
+    private Mayor mayor;
 
-	public City(String name, String state) {
-		this.name = name;
-		this.state = state;
-	}
+    protected City() {
 
-	public String getName() {
-		return this.name;
-	}
+    }
 
-	public String getState() {
-		return this.state;
-	}
+    public City(String name, String state) {
+        this.name = name;
+        this.state = state;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public String getState() {
+        return this.state;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public List<Street> getStreets() {
-		return streets;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setStreets(List<Street> streets) {
-		this.streets = streets;
-	}
+    public void setState(String state) {
+        this.state = state;
+    }
 
-	public Mayor getMayor() {
-		return mayor;
-	}
+    public List<Street> getStreets() {
+        return streets;
+    }
 
-	public void setMayor(Mayor mayor) {
-		this.mayor = mayor;
-	}
-	
+    public void setStreets(List<Street> streets) {
+        this.streets = streets;
+    }
+
+    public Mayor getMayor() {
+        return mayor;
+    }
+
+    public void setMayor(Mayor mayor) {
+        this.mayor = mayor;
+    }
+
 
 }

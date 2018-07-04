@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/")
 public class ApiCtrl {
 
-	@GetMapping(value = "")
-	public String apiHome() {
-		return new String("This is api home page");
-	}
+    @GetMapping(value = "")
+    public String apiHome() {
+        return new String("This is api home page");
+    }
 }

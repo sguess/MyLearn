@@ -9,10 +9,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class JpaApplicationTests {
 
-	@Test
-	public void contextLoads() {
-		System.out.println("Start Testing");
-	}
+    @Test
+    public void contextLoads() {
+        System.out.println("Start Testing");
+    }
 
-	
+
 }

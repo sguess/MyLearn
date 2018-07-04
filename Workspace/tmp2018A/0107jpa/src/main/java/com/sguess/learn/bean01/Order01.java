@@ -7,12 +7,12 @@ import javax.persistence.ManyToOne;
 
 //@Entity
 public class Order01 {
-	@Column
-	private Customer01 customer01;
+    @Column
+    private Customer01 customer01;
 
-	@ManyToOne
-	@JoinColumn(name = "CUST_ID", nullable = false)
-	public Customer01 getCustomer() {
-		return customer01;
-	}
+    @ManyToOne
+    @JoinColumn(name = "CUST_ID", nullable = false)
+    public Customer01 getCustomer() {
+        return customer01;
+    }
 }

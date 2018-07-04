@@ -18,27 +18,28 @@ import com.sguess.service.IUploadService;
 
 @Controller
 public class UploadCtrl {
-	private static final Logger LOG = LoggerFactory.getLogger(UploadCtrl.class);
-	@Autowired
-	IUploadService service;
+    private static final Logger LOG = LoggerFactory.getLogger(UploadCtrl.class);
+    @Autowired
+    IUploadService service;
 
-	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-	@ResponseBody
-	public String uploadFile(@RequestParam("file_data") MultipartFile file) throws IOException {
-		String result = service.uploadFile(file);
-		System.out.println("start to upload file" + file.getName());
-		ResponseEntity<String> responseEntity = new ResponseEntity<>(result, HttpStatus.OK);
-		LOG.info("upload successfull."+responseEntity.getBody());
-		return result;
-	}
-	@RequestMapping(value = "/uploadFileBak", method = RequestMethod.POST)
-	@ResponseBody
-	public ResponseEntity<?> uploadFileBak(@RequestParam("file_data") MultipartFile file) throws IOException {
-		String result = service.uploadFile(file);
-		System.out.println("start to upload file" + file.getName());
-		ResponseEntity<String> responseEntity = new ResponseEntity<>(result, HttpStatus.OK);
-		LOG.info("upload successfull."+responseEntity.getBody());
-		return responseEntity;
-	}
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+    @ResponseBody
+    public String uploadFile(@RequestParam("file_data") MultipartFile file) throws IOException {
+        String result = service.uploadFile(file);
+        System.out.println("start to upload file" + file.getName());
+        ResponseEntity<String> responseEntity = new ResponseEntity<>(result, HttpStatus.OK);
+        LOG.info("upload successfull." + responseEntity.getBody());
+        return result;
+    }
+
+    @RequestMapping(value = "/uploadFileBak", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<?> uploadFileBak(@RequestParam("file_data") MultipartFile file) throws IOException {
+        String result = service.uploadFile(file);
+        System.out.println("start to upload file" + file.getName());
+        ResponseEntity<String> responseEntity = new ResponseEntity<>(result, HttpStatus.OK);
+        LOG.info("upload successfull." + responseEntity.getBody());
+        return responseEntity;
+    }
 
 }

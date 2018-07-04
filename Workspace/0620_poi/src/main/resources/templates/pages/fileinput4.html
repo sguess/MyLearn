@@ -1,67 +1,67 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<script src="webjars/jquery/3.1.1/jquery.min.js"></script>
-<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="webjars/bootstrap-fileinput/js/fileinput.min.js"></script>
-<script src="webjars/bootstrap-fileinput/js/locales/zh.js"></script>
+    <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="webjars/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script src="webjars/bootstrap-fileinput/js/locales/zh.js"></script>
 
-<script src="webjars/bootstrap-fileinput/js/plugins/piexif.js"></script>
-<script src="webjars/bootstrap-fileinput/js/plugins/purify.js"></script>
-<script src="webjars/bootstrap-fileinput/js/plugins/sortable.js"></script>
+    <script src="webjars/bootstrap-fileinput/js/plugins/piexif.js"></script>
+    <script src="webjars/bootstrap-fileinput/js/plugins/purify.js"></script>
+    <script src="webjars/bootstrap-fileinput/js/plugins/sortable.js"></script>
 
-<link rel="stylesheet"
-	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="webjars/bootstrap-fileinput/css/fileinput.min.css" />
-<link rel="stylesheet"
-	href="webjars/bootstrap-fileinput/css/fileinput-rtl.css" />
-<title>Sguess Home page</title>
-<script type="text/javascript">
-	$(function() {
-		var control = $("#txt_file");
-		var uploadrul = "/Home/UploadFile";
-		control.fileinput({
-			language : 'zh', //设置语言
-			uploadUrl : uploadrul, //上传的地址
-			allowedFileExtensions : [ 'png' ],//接收的文件后缀
-			showUpload : true, //显示批量上传按钮
-			showCaption : false,//是否显示标题
-			browseClass : "btn btn-primary", //按钮样式     
-			dropZoneEnabled : true,//是否显示拖拽区域
-			//minImageWidth: 50, //图片的最小宽度
-			//minImageHeight: 50,//图片的最小高度
-			//maxImageWidth: 1000,//图片的最大宽度
-			//maxImageHeight: 1000,//图片的最大高度
-			//maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
-			//minFileCount: 0,
-			maxFileCount : 100,
-			enctype : 'multipart/form-data',
-			validateInitialCount : true,
-			previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
+    <link rel="stylesheet"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          href="webjars/bootstrap-fileinput/css/fileinput.min.css"/>
+    <link rel="stylesheet"
+          href="webjars/bootstrap-fileinput/css/fileinput-rtl.css"/>
+    <title>Sguess Home page</title>
+    <script type="text/javascript">
+        $(function () {
+            var control = $("#txt_file");
+            var uploadrul = "/Home/UploadFile";
+            control.fileinput({
+                language: 'zh', //设置语言
+                uploadUrl: uploadrul, //上传的地址
+                allowedFileExtensions: ['png'],//接收的文件后缀
+                showUpload: true, //显示批量上传按钮
+                showCaption: false,//是否显示标题
+                browseClass: "btn btn-primary", //按钮样式
+                dropZoneEnabled: true,//是否显示拖拽区域
+                //minImageWidth: 50, //图片的最小宽度
+                //minImageHeight: 50,//图片的最小高度
+                //maxImageWidth: 1000,//图片的最大宽度
+                //maxImageHeight: 1000,//图片的最大高度
+                //maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
+                //minFileCount: 0,
+                maxFileCount: 100,
+                enctype: 'multipart/form-data',
+                validateInitialCount: true,
+                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
 
-			msgFilesTooMany : "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
-		});
-		//导入文件上传完成之后的事件
-		$("#txt_file").on("fileuploaded",
-				function(event, data, previewId, index) {
-				});
-	});
-</script>
+                msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+            });
+            //导入文件上传完成之后的事件
+            $("#txt_file").on("fileuploaded",
+                function (event, data, previewId, index) {
+                });
+        });
+    </script>
 </head>
 <body>
-	<div  class="row">
-		<form>
-			<div>
-				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel">请选择xml文件</h4>
-				</div>
-				<div class="modal-body">
-					<input type="file" name="txt_file" id="txt_file" multiple="true"
-						class="file-loading" />
-				</div>
-			</div>
-		</form>
-	</div>
+<div class="row">
+    <form>
+        <div>
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">请选择xml文件</h4>
+            </div>
+            <div class="modal-body">
+                <input type="file" name="txt_file" id="txt_file" multiple="true"
+                       class="file-loading"/>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>

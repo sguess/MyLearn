@@ -6,8 +6,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface IUploadService {
 
-	String uploadFile(MultipartFile file);
-	
-	String downloadFile(File file);
+    String uploadFile(MultipartFile file);
+
+    String downloadFile(File file);
 
 }

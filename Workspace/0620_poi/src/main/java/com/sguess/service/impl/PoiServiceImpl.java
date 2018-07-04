@@ -25,66 +25,67 @@ import com.sguess.service.IPoiService;
 
 @Service
 public class PoiServiceImpl implements IPoiService {
-	private static final Logger log = LoggerFactory.getLogger(PoiServiceImpl.class);
+    private static final Logger log = LoggerFactory.getLogger(PoiServiceImpl.class);
 
-	@Override
-	public List<Excel> parseFile(MultipartFile file) throws IOException {
-		System.err.print("-------->Start to parse the file:" + file.getName());
-		XSSFWorkbook xbook=new XSSFWorkbook(file.getInputStream());
-		Iterator<Sheet> sheetIt = xbook.sheetIterator();
-		while(sheetIt.hasNext()) {
-			Sheet sheet=sheetIt.next();
-			log.info("--------->name: "+sheet.getSheetName());
-		}
-		return new ArrayList<Excel>();
-	}
+    @Override
+    public List<Excel> parseFile(MultipartFile file) throws IOException {
+        System.err.print("-------->Start to parse the file:" + file.getName());
+        XSSFWorkbook xbook = new XSSFWorkbook(file.getInputStream());
+        Iterator<Sheet> sheetIt = xbook.sheetIterator();
+        while (sheetIt.hasNext()) {
+            Sheet sheet = sheetIt.next();
+            log.info("--------->name: " + sheet.getSheetName());
+        }
+        return new ArrayList<Excel>();
+    }
 
-	/**
-	 * SXSSFWorkbook sbook=new SXSSFWorkbook ();
-	 * 
-	 * XSSFWorkbook xbook=new XSSFWorkbook();
-	 * 
-	 * HSSFWorkbook hbook=new HSSFWorkbook();
-	 * @throws IOException 
-	 * @throws InvalidFormatException 
-	 */
+    /**
+     * SXSSFWorkbook sbook=new SXSSFWorkbook ();
+     * <p>
+     * XSSFWorkbook xbook=new XSSFWorkbook();
+     * <p>
+     * HSSFWorkbook hbook=new HSSFWorkbook();
+     *
+     * @throws IOException
+     * @throws InvalidFormatException
+     */
 
-	@Override
-	public List<Excel> parseFile(File file) throws InvalidFormatException, IOException {
-		assertTrue("The file should not be null", file != null);
-		System.err.print("-------->Start to parse the file:" + file.getName());
-		assertTrue("The " + file.getName() + " file exist status is " + file.exists(), file.exists());
-		XSSFWorkbook xbook=new XSSFWorkbook(file);
-		Iterator<Sheet> sheetIt = xbook.sheetIterator();
-		while(sheetIt.hasNext()) {
-			Sheet sheet=sheetIt.next();
+    @Override
+    public List<Excel> parseFile(File file) throws InvalidFormatException, IOException {
+        assertTrue("The file should not be null", file != null);
+        System.err.print("-------->Start to parse the file:" + file.getName());
+        assertTrue("The " + file.getName() + " file exist status is " + file.exists(), file.exists());
+        XSSFWorkbook xbook = new XSSFWorkbook(file);
+        Iterator<Sheet> sheetIt = xbook.sheetIterator();
+        while (sheetIt.hasNext()) {
+            Sheet sheet = sheetIt.next();
 //			parseSheet(sheet);
-			log.info("--------->name: "+sheet.getSheetName());
-		}
-		
-		
-		return new ArrayList<Excel>();
-	}
+            log.info("--------->name: " + sheet.getSheetName());
+        }
 
-	private void parseSheet(Sheet sheet) {
-		int lastRowNum = sheet.getLastRowNum();
-		for(int i=0;i<lastRowNum;i++) {
-			Row row=sheet.getRow(i);
-			System.out.println();
-			for(int j=0;j<row.getLastCellNum();j++) {
-				Cell cell = row.getCell(j);
-				String s=cell.getStringCellValue();
-				
-				System.out.print(s);
-			}
-		}
-		
-	}
 
-	public static void main(String[] args) throws InvalidFormatException, IOException {
-		PoiServiceImpl service = new PoiServiceImpl();
-		String filePath = "C:\\tmp\\upload.xlsx";
-		File file = new File(filePath);
-		service.parseFile(file);
-	}
+        return new ArrayList<Excel>();
+    }
+
+    private void parseSheet(Sheet sheet) {
+        int lastRowNum = sheet.getLastRowNum();
+        for (int i = 0; i < lastRowNum; i++) {
+            Row row = sheet.getRow(i);
+            System.out.println();
+            for (int j = 0; j < row.getLastCellNum(); j++) {
+                Cell cell = row.getCell(j);
+                String s = cell.getStringCellValue();
+
+                System.out.print(s);
+            }
+        }
+
+    }
+
+    public static void main(String[] args) throws InvalidFormatException, IOException {
+        PoiServiceImpl service = new PoiServiceImpl();
+        String filePath = "C:\\tmp\\upload.xlsx";
+        File file = new File(filePath);
+        service.parseFile(file);
+    }
 }

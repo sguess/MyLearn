@@ -11,16 +11,16 @@ import com.sguess.repository.BeanRepository;
 @Service
 public class TestService {
 
-	@Autowired
-	public BeanRepository repository;
-	
-	public List<Bean> getData() {
-		List<Bean> list=repository.findAll();
-		return list;
-	}
+    @Autowired
+    public BeanRepository repository;
 
-	public Bean insertBean(Bean bean) {
-		Bean rst = repository.save(bean);
-		return rst;
-	}
+    public List<Bean> getData() {
+        List<Bean> list = repository.findAll();
+        return list;
+    }
+
+    public Bean insertBean(Bean bean) {
+        Bean rst = repository.save(bean);
+        return rst;
+    }
 }

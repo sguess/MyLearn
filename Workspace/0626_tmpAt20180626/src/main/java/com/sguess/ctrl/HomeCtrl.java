@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeCtrl {
 
-	@RequestMapping(value = "/")
-	public String homePage() {
-		return "index";
-	}
+    @RequestMapping(value = "/")
+    public String homePage() {
+        return "index";
+    }
 }

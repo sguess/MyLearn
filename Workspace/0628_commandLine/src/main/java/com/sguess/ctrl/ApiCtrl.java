@@ -27,63 +27,63 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @RequestMapping(value = "/api/")
 public class ApiCtrl {
-	private static final Logger log = LoggerFactory.getLogger(ApiCtrl.class);
+    private static final Logger log = LoggerFactory.getLogger(ApiCtrl.class);
 
-	@PostMapping(value = "cmd")
-	public String callCmd(@RequestBody String command) throws IOException, InterruptedException {
-		log.info("The command is " + command);
-		String resultLog = "";
-		String[] commandSplit = command.split(" ");
-		List<String> lcommand = new ArrayList<String>();
-		for (int i = 0; i < commandSplit.length; i++) {
-			lcommand.add(commandSplit[i]);
-		}
+    @PostMapping(value = "cmd")
+    public String callCmd(@RequestBody String command) throws IOException, InterruptedException {
+        log.info("The command is " + command);
+        String resultLog = "";
+        String[] commandSplit = command.split(" ");
+        List<String> lcommand = new ArrayList<String>();
+        for (int i = 0; i < commandSplit.length; i++) {
+            lcommand.add(commandSplit[i]);
+        }
 
-		ProcessBuilder processBuilder = new ProcessBuilder(lcommand);
-		processBuilder.redirectErrorStream(true);
-		Process p = processBuilder.start();
-		InputStream is = p.getInputStream();
-		BufferedReader bs = new BufferedReader(new InputStreamReader(is));
+        ProcessBuilder processBuilder = new ProcessBuilder(lcommand);
+        processBuilder.redirectErrorStream(true);
+        Process p = processBuilder.start();
+        InputStream is = p.getInputStream();
+        BufferedReader bs = new BufferedReader(new InputStreamReader(is));
 
-		p.waitFor();
-		if (p.exitValue() != 0) {
-			// 说明命令执行失败
-			// 可以进入到错误处理步骤中
-		}
-		String line = null;
-		while ((line = bs.readLine()) != null) {
-			// System.out.println(line);
-			resultLog += line;
-		}
-		System.err.println("--->" + resultLog);
-		return resultLog;
-	}
+        p.waitFor();
+        if (p.exitValue() != 0) {
+            // 说明命令执行失败
+            // 可以进入到错误处理步骤中
+        }
+        String line = null;
+        while ((line = bs.readLine()) != null) {
+            // System.out.println(line);
+            resultLog += line;
+        }
+        System.err.println("--->" + resultLog);
+        return resultLog;
+    }
 
-	public static void main(String[] args) throws ExecuteException, IOException, InterruptedException {
-		String resultLog = "";
-		String command = "";
-		String[] commandSplit = command.split(" ");
-		List<String> lcommand = new ArrayList<String>();
-		for (int i = 0; i < commandSplit.length; i++) {
-			lcommand.add(commandSplit[i]);
-		}
+    public static void main(String[] args) throws ExecuteException, IOException, InterruptedException {
+        String resultLog = "";
+        String command = "";
+        String[] commandSplit = command.split(" ");
+        List<String> lcommand = new ArrayList<String>();
+        for (int i = 0; i < commandSplit.length; i++) {
+            lcommand.add(commandSplit[i]);
+        }
 
-		ProcessBuilder processBuilder = new ProcessBuilder(lcommand);
-		processBuilder.redirectErrorStream(true);
-		Process p = processBuilder.start();
-		InputStream is = p.getInputStream();
-		BufferedReader bs = new BufferedReader(new InputStreamReader(is));
+        ProcessBuilder processBuilder = new ProcessBuilder(lcommand);
+        processBuilder.redirectErrorStream(true);
+        Process p = processBuilder.start();
+        InputStream is = p.getInputStream();
+        BufferedReader bs = new BufferedReader(new InputStreamReader(is));
 
-		p.waitFor();
-		if (p.exitValue() != 0) {
-			// 说明命令执行失败
-			// 可以进入到错误处理步骤中
-		}
-		String line = null;
-		while ((line = bs.readLine()) != null) {
-			// System.out.println(line);
-			resultLog += line;
-		}
-		System.err.println("--->" + resultLog);
-	}
+        p.waitFor();
+        if (p.exitValue() != 0) {
+            // 说明命令执行失败
+            // 可以进入到错误处理步骤中
+        }
+        String line = null;
+        while ((line = bs.readLine()) != null) {
+            // System.out.println(line);
+            resultLog += line;
+        }
+        System.err.println("--->" + resultLog);
+    }
 }
