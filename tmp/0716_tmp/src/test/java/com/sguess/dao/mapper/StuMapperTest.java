@@ -96,9 +96,9 @@ public class StuMapperTest {
         System.out.println("---------------->" + status);
         List<StuEntity> rstList = repository.selectAllbyTable(tableName);
         for (StuEntity stuEntity : rstList) {
-            if(stuEntity==null){
+            if (stuEntity == null) {
                 System.out.println("Rst is: ---> null");
-            }else{
+            } else {
                 System.out.println("Rst is: ---> " + stuEntity.toString());
             }
 
@@ -110,16 +110,34 @@ public class StuMapperTest {
         String tableName = "stu001";
         List<StuEntity> rstList = repository.selectAllbyTable(tableName);
         for (StuEntity stuEntity : rstList) {
-            if(stuEntity==null){
+            if (stuEntity == null) {
                 System.out.println("Rst is: ---> null");
-            }else{
+            } else {
                 System.out.println("Rst is: ---> " + stuEntity.toString());
             }
 
         }
     }
+
     public static void main(String[] args) {
         MessageFormat messageFormat = new MessageFormat("");
     }
 
+    @Test
+    public void testSave10000() {
+        String tableName = "stu001";
+        for (int i = 0; i < 100; i++) {
+            List<StuEntity> list = getEntityList();
+            int status = stuMapper.insertBatch(tableName, list);
+            System.out.println("status:" + status);
+        }
+    }
+
+    private List<StuEntity> getEntityList() {
+        List<StuEntity> list = new ArrayList<>();
+        for (int i = 0; i < 3000; i++) {
+            list.add(new StuEntity("Closing org.springframework.web.context.support.GenericWebApplicationContext@4722ef0c: startup date [Mon Jul 23 17:56:21 CST 2018]; root of context hierarchy" + i, new Date()));
+        }
+        return list;
+    }
 }

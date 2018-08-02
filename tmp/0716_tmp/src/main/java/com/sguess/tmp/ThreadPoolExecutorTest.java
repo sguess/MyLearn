@@ -1,5 +1,8 @@
 package com.sguess.tmp;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.*;
 
 public class ThreadPoolExecutorTest {
@@ -11,10 +14,10 @@ public class ThreadPoolExecutorTest {
     private void test01() throws InterruptedException {
         LinkedBlockingDeque<Runnable> workQueue = new LinkedBlockingDeque<>();
         ThreadPoolExecutor executor = new ThreadPoolExecutor(3, 3, 1, TimeUnit.SECONDS, workQueue);
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
-                while(true){
+                while (true) {
                     System.err.println(executor.getQueue().size());
                     try {
                         Thread.sleep(500);
@@ -25,20 +28,43 @@ public class ThreadPoolExecutorTest {
 
             }
         }.start();
+        List<Future<String>> list = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
-            executor.submit(new Th("Th" + i));
-            StringBuffer sb = new StringBuffer();
+            Future<String> rsts = executor.submit(new Th1("Th" + i));
+            list.add(rsts);
             BlockingQueue<Runnable> queue = executor.getQueue();
-//            for (Runnable runnable : queue) {
-//                sb.append(runnable.getClass().getName()).append(",\t");
-
-//            }
-            System.out.println(i+":\t"+queue.size());
-//            System.out.println(sb.toString());
+            System.out.println(i + ":\t" + queue.size());
             Thread.sleep(500);
         }
+        new Thread(()->{
+            while (true){
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Iterator<Future<String>> it = list.iterator();
+                StringBuffer sb=new StringBuffer("------->");
+                while(it.hasNext()){
 
+                    Future<String> next = it.next();
+                    if (next.isDone()){
+                        try {
+                            String rst = next.get();
+                            sb.append(rst+",\t");
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                System.out.println(sb.toString());
+            }
+        }).start();
     }
+
+
 
     class Th implements Runnable {
 
