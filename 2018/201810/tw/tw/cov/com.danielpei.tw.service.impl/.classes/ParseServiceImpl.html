@@ -1,0 +1,234 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ParseServiceImpl</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.danielpei.tw.service.impl</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ParseServiceImpl (com.danielpei.tw.service.impl)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ParseServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.4%
+  </span>
+  <span class="absValue">
+    (76/ 89)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.danielpei.tw.service.impl;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.danielpei.tw.beans.ConferenceType;
+<i>4</i>&nbsp;import com.danielpei.tw.beans.Conference;
+<i>5</i>&nbsp;import com.danielpei.tw.exception.ConferenceException;
+<i>6</i>&nbsp;import com.danielpei.tw.service.IParseService;
+<i>7</i>&nbsp;import com.danielpei.tw.utils.InputUtils;
+<i>8</i>&nbsp;import org.slf4j.Logger;
+<i>9</i>&nbsp;import org.slf4j.LoggerFactory;
+<i>10</i>&nbsp;import org.springframework.beans.factory.annotation.Value;
+<i>11</i>&nbsp;import org.springframework.stereotype.Service;
+<i>12</i>&nbsp;import org.springframework.util.ClassUtils;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;import javax.annotation.PostConstruct;
+<i>16</i>&nbsp;import java.io.*;
+<i>17</i>&nbsp;import java.util.ArrayList;
+<i>18</i>&nbsp;import java.util.Calendar;
+<i>19</i>&nbsp;import java.util.List;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;@Service
+<b class="fc"><i>23</i>&nbsp;public class ParseServiceImpl implements IParseService {</b>
+<b class="fc"><i>24</i>&nbsp;    Logger LOG = LoggerFactory.getLogger(ParseServiceImpl.class);</b>
+<i>25</i>&nbsp;    private static final String defaultFilePath = &quot;data/input.txt&quot;;
+<b class="fc"><i>26</i>&nbsp;    private long trackMaxDuration = 0;</b>
+<b class="fc"><i>27</i>&nbsp;    @Value(&quot;${time.track.track.morning.start.hour}&quot;)</b>
+<i>28</i>&nbsp;    int trackMorningStartHour = 9;
+<b class="fc"><i>29</i>&nbsp;    @Value(&quot;${time.track.track.morning.end.hour}&quot;)</b>
+<i>30</i>&nbsp;    int trackMorningEndHour = 12;
+<b class="fc"><i>31</i>&nbsp;    @Value(&quot;${time.track.track.afternoon.start.hour}&quot;)</b>
+<i>32</i>&nbsp;    int trackAfternoonStartHour = 13;
+<b class="fc"><i>33</i>&nbsp;    @Value(&quot;${time.track.track.afternoon.end.hour}&quot;)</b>
+<i>34</i>&nbsp;    int trackAfternoonEndHour = 17;
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    @PostConstruct
+<i>37</i>&nbsp;    public long initTrackMaxDuration() {
+<b class="fc"><i>38</i>&nbsp;        long moringDuration = getTrackTime(trackMorningEndHour) - getTrackTime(trackMorningStartHour);</b>
+<b class="fc"><i>39</i>&nbsp;        LOG.info(&quot;Morning track max duration is &quot; + moringDuration);</b>
+<b class="fc"><i>40</i>&nbsp;        long afternoonDuration = getTrackTime(trackAfternoonEndHour) - getTrackTime(trackAfternoonStartHour);</b>
+<b class="fc"><i>41</i>&nbsp;        LOG.info(&quot;Afternoon track max duration is &quot; + afternoonDuration);</b>
+<b class="fc"><i>42</i>&nbsp;        trackMaxDuration = Math.max(moringDuration, afternoonDuration);</b>
+<b class="fc"><i>43</i>&nbsp;        LOG.info(&quot;The max duration is&quot; + trackMaxDuration);</b>
+<b class="fc"><i>44</i>&nbsp;        return trackMaxDuration;</b>
+<i>45</i>&nbsp;    }
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    private long getTrackTime(int hour) {
+<b class="fc"><i>48</i>&nbsp;        Calendar time = Calendar.getInstance();</b>
+<b class="fc"><i>49</i>&nbsp;        time.set(Calendar.MINUTE, 0);</b>
+<b class="fc"><i>50</i>&nbsp;        time.set(Calendar.SECOND, 0);</b>
+<b class="fc"><i>51</i>&nbsp;        time.set(Calendar.MILLISECOND, 0);</b>
+<b class="fc"><i>52</i>&nbsp;        time.set(Calendar.HOUR_OF_DAY, hour);</b>
+<b class="fc"><i>53</i>&nbsp;        return time.getTimeInMillis();</b>
+<i>54</i>&nbsp;    }
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;    @Override
+<i>57</i>&nbsp;    public List&lt;Conference&gt; parseDefaultData() throws ConferenceException {
+<b class="fc"><i>58</i>&nbsp;        List&lt;String&gt; inputLineList = parseFile();</b>
+<b class="fc"><i>59</i>&nbsp;        if (inputLineList == null || inputLineList.size() == 0) {</b>
+<b class="fc"><i>60</i>&nbsp;            inputLineList.add(&quot;Writing Fast Tests Against Enterprise Rails 60min&quot;);</b>
+<b class="fc"><i>61</i>&nbsp;            inputLineList.add(&quot;Overdoing it in Python 45min&quot;);</b>
+<b class="fc"><i>62</i>&nbsp;            inputLineList.add(&quot;Lua for the Masses 30min&quot;);</b>
+<b class="fc"><i>63</i>&nbsp;            inputLineList.add(&quot;Ruby Errors from Mismatched Gem Versions 45min&quot;);</b>
+<b class="fc"><i>64</i>&nbsp;            inputLineList.add(&quot;Common Ruby Errors 45min&quot;);</b>
+<b class="fc"><i>65</i>&nbsp;            inputLineList.add(&quot;Rails for Python Developers lightning&quot;);</b>
+<b class="fc"><i>66</i>&nbsp;            inputLineList.add(&quot;Communicating Over Distance 60min&quot;);</b>
+<b class="fc"><i>67</i>&nbsp;            inputLineList.add(&quot;Accounting-Driven Development 45min&quot;);</b>
+<b class="fc"><i>68</i>&nbsp;            inputLineList.add(&quot;Woah 30min&quot;);</b>
+<b class="fc"><i>69</i>&nbsp;            inputLineList.add(&quot;Sit Down and Write 30min&quot;);</b>
+<b class="fc"><i>70</i>&nbsp;            inputLineList.add(&quot;Pair Programming vs Noise 45min&quot;);</b>
+<b class="fc"><i>71</i>&nbsp;            inputLineList.add(&quot;Rails Magic 60min&quot;);</b>
+<b class="fc"><i>72</i>&nbsp;            inputLineList.add(&quot;Ruby on Rails: Why We Should Move On 60min&quot;);</b>
+<b class="fc"><i>73</i>&nbsp;            inputLineList.add(&quot;Clojure Ate Scala (on my project) 45min&quot;);</b>
+<b class="fc"><i>74</i>&nbsp;            inputLineList.add(&quot;Programming in the Boondocks of Seattle 30min&quot;);</b>
+<b class="fc"><i>75</i>&nbsp;            inputLineList.add(&quot;Ruby vs. Clojure for Back-End Development 30min&quot;);</b>
+<b class="fc"><i>76</i>&nbsp;            inputLineList.add(&quot;Ruby on Rails Legacy App Maintenance 60min&quot;);</b>
+<b class="fc"><i>77</i>&nbsp;            inputLineList.add(&quot;A World Without HackerNews 30min&quot;);</b>
+<b class="fc"><i>78</i>&nbsp;            inputLineList.add(&quot;User Interface CSS in Rails Apps 30min&quot;);</b>
+<i>79</i>&nbsp;        }
+<b class="fc"><i>80</i>&nbsp;        List&lt;Conference&gt; rstList = parseDefaultDataFromInputList(inputLineList);</b>
+<b class="fc"><i>81</i>&nbsp;        return rstList;</b>
+<i>82</i>&nbsp;    }
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;    private List&lt;String&gt; parseFile() {
+<b class="fc"><i>85</i>&nbsp;        File file = null;</b>
+<b class="fc"><i>86</i>&nbsp;        file = new File(ClassUtils.getDefaultClassLoader().getResource(&quot;&quot;).getPath() + defaultFilePath);</b>
+<b class="fc"><i>87</i>&nbsp;        List&lt;String&gt; inputLineList = new ArrayList();</b>
+<i>88</i>&nbsp;        try {
+<b class="fc"><i>89</i>&nbsp;            BufferedReader reader = new BufferedReader(new FileReader(file));</b>
+<b class="nc"><i>90</i>&nbsp;            String lineStr = &quot;&quot;;</b>
+<b class="nc"><i>91</i>&nbsp;            while ((lineStr = reader.readLine()) != null) {</b>
+<b class="nc"><i>92</i>&nbsp;                inputLineList.add(lineStr);</b>
+<i>93</i>&nbsp;            }
+<b class="nc"><i>94</i>&nbsp;            reader.close();</b>
+<b class="fc"><i>95</i>&nbsp;        } catch (FileNotFoundException e) {</b>
+<b class="fc"><i>96</i>&nbsp;            e.printStackTrace();</b>
+<b class="nc"><i>97</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i>98</i>&nbsp;            e.printStackTrace();</b>
+<b class="fc"><i>99</i>&nbsp;        }</b>
+<b class="fc"><i>100</i>&nbsp;        return inputLineList;</b>
+<i>101</i>&nbsp;    }
+<i>102</i>&nbsp;
+<i>103</i>&nbsp;    @Override
+<i>104</i>&nbsp;    public List&lt;Conference&gt; parseDefaultDataFromInputList(List&lt;String&gt; inputLineList) throws ConferenceException {
+<b class="fc"><i>105</i>&nbsp;        if (inputLineList == null || inputLineList.size() == 0) {</b>
+<b class="nc"><i>106</i>&nbsp;            LOG.error(&quot;Input line Str is empty!&quot;);</b>
+<b class="nc"><i>107</i>&nbsp;            return new ArrayList&lt;&gt;();</b>
+<i>108</i>&nbsp;        }
+<b class="fc"><i>109</i>&nbsp;        LOG.info(&quot;input Line str size is &quot; + inputLineList.size());</b>
+<b class="fc"><i>110</i>&nbsp;        List&lt;Conference&gt; rstList = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>111</i>&nbsp;        for (String lineStr : inputLineList) {</b>
+<b class="fc"><i>112</i>&nbsp;            Conference conference = parseConferenceFromStr(lineStr);</b>
+<b class="fc"><i>113</i>&nbsp;            LOG.info(&quot;Get a conference from &quot; + lineStr);</b>
+<b class="fc"><i>114</i>&nbsp;            if (conference != null) {</b>
+<b class="fc"><i>115</i>&nbsp;                LOG.info(&quot;add a new conference.&quot;);</b>
+<b class="fc"><i>116</i>&nbsp;                rstList.add(conference);</b>
+<i>117</i>&nbsp;            } else {
+<b class="nc"><i>118</i>&nbsp;                LOG.error(&quot;the conference is not correct:&quot; + lineStr);</b>
+<i>119</i>&nbsp;            }
+<b class="fc"><i>120</i>&nbsp;        }</b>
+<b class="fc"><i>121</i>&nbsp;        return rstList;</b>
+<i>122</i>&nbsp;    }
+<i>123</i>&nbsp;
+<i>124</i>&nbsp;
+<i>125</i>&nbsp;    @Override
+<i>126</i>&nbsp;    public Conference parseConferenceFromStr(String lineStr) throws ConferenceException {
+<b class="fc"><i>127</i>&nbsp;        if (!InputUtils.isCorrectFormat(lineStr)) {</b>
+<b class="nc"><i>128</i>&nbsp;            LOG.error(&quot;The input conference information is not correct. &quot; + lineStr);</b>
+<b class="nc"><i>129</i>&nbsp;            throw new ConferenceException(&quot;The input conference information is not correct. &quot; + lineStr);</b>
+<i>130</i>&nbsp;        }
+<b class="fc"><i>131</i>&nbsp;        Conference conference = new Conference();</b>
+<b class="fc"><i>132</i>&nbsp;        lineStr = lineStr.trim();</b>
+<b class="fc"><i>133</i>&nbsp;        int lastSpaceIndex = lineStr.lastIndexOf(&quot; &quot;);</b>
+<b class="fc"><i>134</i>&nbsp;        conference.setName(lineStr.substring(0, lastSpaceIndex));</b>
+<b class="fc"><i>135</i>&nbsp;        if (lineStr.endsWith(&quot;lightning&quot;)) {</b>
+<b class="fc"><i>136</i>&nbsp;            conference.setDuration(5 * 60 * 1000);</b>
+<b class="fc"><i>137</i>&nbsp;            conference.setType(ConferenceType.LIGHTNING);</b>
+<i>138</i>&nbsp;        } else {
+<b class="fc"><i>139</i>&nbsp;            long durationMins = Long.parseLong(lineStr.substring(lastSpaceIndex + 1).replace(&quot;min&quot;, &quot;&quot;));</b>
+<b class="fc"><i>140</i>&nbsp;            conference.setDuration(durationMins * 60 * 1000);</b>
+<b class="fc"><i>141</i>&nbsp;            if (conference.getDuration() &gt; trackMaxDuration) {</b>
+<b class="nc"><i>142</i>&nbsp;                LOG.error(&quot;A conference max time should less than &quot; + trackMaxDuration / 1000 / 60 + &quot;mins. &quot; + lineStr);</b>
+<b class="nc"><i>143</i>&nbsp;                throw new ConferenceException(&quot;A conference max time should less than &quot; + trackMaxDuration / 1000 / 60 + &quot;mins. &quot; + lineStr);</b>
+<i>144</i>&nbsp;            }
+<b class="fc"><i>145</i>&nbsp;            conference.setType(ConferenceType.NORMAL);</b>
+<i>146</i>&nbsp;        }
+<b class="fc"><i>147</i>&nbsp;        conference.setOriginStr(lineStr);</b>
+<b class="fc"><i>148</i>&nbsp;        return conference;</b>
+<i>149</i>&nbsp;    }
+<i>150</i>&nbsp;
+<i>151</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-10-11 13:44</div>
+</div>
+</body>
+</html>

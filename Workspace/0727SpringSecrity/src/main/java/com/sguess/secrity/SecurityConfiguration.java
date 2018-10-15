@@ -31,15 +31,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/admin", "/admin01").hasAnyAuthority("Admin")
-                .antMatchers("/enduser", "/enduser01").hasAnyAuthority("EndUser")
-                .antMatchers("/normal", "/normal01").hasAnyAuthority("Normal")
-                .antMatchers("/api/**").hasAnyAuthority("API")
+        http.authorizeRequests().antMatchers("/admin", "/admin01").hasAnyRole("Admin")
+                .antMatchers("/enduser", "/enduser01").hasAnyRole("EndUser")
+                .antMatchers("/normal", "/normal01").hasAnyRole("Normal")
+                .antMatchers("/api/**").hasAnyRole("API")
                 .antMatchers("/img/**", "/js/**", "css/**", "/webjars/**").permitAll()
                 .anyRequest().fullyAuthenticated()
                 .and()
                 .formLogin().successHandler(authSucessHander)
-                .loginPage("/login").failureUrl("/login?error")
+                .loginPage("/login").failureUrl("/login? error")
                 .permitAll()
                 .and()
                 .logout()
@@ -50,7 +50,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().accessDeniedHandler(authAccessDeniedHandel);
         http.csrf().disable();
         http.exceptionHandling().authenticationEntryPoint(new AjaxAwareAuthenticationEntryPoint("/login"));
-
     }
 
     @Override

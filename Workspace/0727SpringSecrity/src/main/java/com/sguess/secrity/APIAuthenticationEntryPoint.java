@@ -19,6 +19,7 @@ public class APIAuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         response.addHeader("WWW-Authenticate", "Basic Realm=" + response);
+
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         PrintWriter printWriter = response.getWriter();
         String outputStr = new ObjectMapper().writeValueAsString(new APIMessage(HttpStatus.UNAUTHORIZED.toString(), authException.getMessage(), ""));

@@ -1,9 +1,11 @@
 package com.sguess.secrity;
 
+import com.sun.net.httpserver.Headers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import org.springframework.security.web.header.Header;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
@@ -15,11 +17,6 @@ public class AjaxAwareAuthenticationEntryPoint extends LoginUrlAuthenticationEnt
     private static Logger log = LoggerFactory.getLogger(AjaxAwareAuthenticationEntryPoint.class);
     private String loginFormUrl;
 
-    /**
-     * @param loginFormUrl URL where the login page can be found. Should either be
-     *                     relative to the web-app context path (include a leading {@code /}) or an absolute
-     *                     URL.
-     */
     public AjaxAwareAuthenticationEntryPoint(String loginFormUrl) {
         super(loginFormUrl);
         this.loginFormUrl = loginFormUrl;

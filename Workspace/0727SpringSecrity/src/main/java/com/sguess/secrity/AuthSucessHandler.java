@@ -23,8 +23,10 @@ public class AuthSucessHandler extends SavedRequestAwareAuthenticationSuccessHan
         String role=authentication.getAuthorities().toString();
         String targetUrl="adminHomePage";
         if (role.equals("Admin")){
+            logger.info("-----------> This is admin");
             return "/adminHomePage";
         }else{
+            logger.info("-----------> This is not admin");
             return "/nomalPage";
         }
     }

@@ -1,0 +1,235 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PlanningServiceImpl</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.danielpei.tw.service.impl</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PlanningServiceImpl (com.danielpei.tw.service.impl)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PlanningServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    97.8%
+  </span>
+  <span class="absValue">
+    (90/ 92)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.danielpei.tw.service.impl;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.danielpei.tw.beans.Conference;
+<i>4</i>&nbsp;import com.danielpei.tw.beans.ConferenceStatus;
+<i>5</i>&nbsp;import com.danielpei.tw.beans.Track;
+<i>6</i>&nbsp;import com.danielpei.tw.beans.TrackType;
+<i>7</i>&nbsp;import com.danielpei.tw.beans.ConferenceType;
+<i>8</i>&nbsp;import com.danielpei.tw.service.IPlanningService;
+<i>9</i>&nbsp;import org.slf4j.Logger;
+<i>10</i>&nbsp;import org.slf4j.LoggerFactory;
+<i>11</i>&nbsp;import org.springframework.beans.factory.annotation.Value;
+<i>12</i>&nbsp;import org.springframework.stereotype.Service;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;import java.util.ArrayList;
+<i>15</i>&nbsp;import java.util.Calendar;
+<i>16</i>&nbsp;import java.util.Date;
+<i>17</i>&nbsp;import java.util.List;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;import static com.danielpei.tw.common.Constants.*;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;@Service
+<b class="fc"><i>22</i>&nbsp;public class PlanningServiceImpl implements IPlanningService {</b>
+<b class="fc"><i>23</i>&nbsp;    private static final Logger LOG = LoggerFactory.getLogger(PlanningServiceImpl.class);</b>
+<b class="fc"><i>24</i>&nbsp;    @Value(&quot;${time.track.track.lunch.hour}&quot;)</b>
+<i>25</i>&nbsp;    int lunchHour = 12;
+<b class="fc"><i>26</i>&nbsp;    @Value(&quot;${time.track.track.morning.start.hour}&quot;)</b>
+<i>27</i>&nbsp;    int trackMorningStartHour = 9;
+<b class="fc"><i>28</i>&nbsp;    @Value(&quot;${time.track.track.morning.end.hour}&quot;)</b>
+<i>29</i>&nbsp;    int trackMorningEndHour = 12;
+<b class="fc"><i>30</i>&nbsp;    @Value(&quot;${time.track.track.afternoon.start.hour}&quot;)</b>
+<i>31</i>&nbsp;    int trackAfternoonStartHour = 13;
+<b class="fc"><i>32</i>&nbsp;    @Value(&quot;${time.track.track.afternoon.end.hour}&quot;)</b>
+<i>33</i>&nbsp;    int trackAfternoonEndHour = 17;
+<b class="fc"><i>34</i>&nbsp;    @Value(&quot;${time.track.track.afternoon.early.end.hour}&quot;)</b>
+<i>35</i>&nbsp;    int trackAfternoonEarlyEndHour = 16;
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;    /**
+<i>39</i>&nbsp;     * This is the planning conference follow logic.
+<i>40</i>&nbsp;     *
+<i>41</i>&nbsp;     * @param conferenceList
+<i>42</i>&nbsp;     * @return
+<i>43</i>&nbsp;     */
+<i>44</i>&nbsp;    @Override
+<i>45</i>&nbsp;    public List&lt;Track&gt; planConference(List&lt;Conference&gt; conferenceList) {
+<b class="fc"><i>46</i>&nbsp;        if (conferenceList == null || conferenceList.isEmpty()) {</b>
+<b class="nc"><i>47</i>&nbsp;            LOG.error(&quot;The conference is empty!&quot;);</b>
+<b class="nc"><i>48</i>&nbsp;            return new ArrayList&lt;&gt;();</b>
+<i>49</i>&nbsp;        }
+<b class="fc"><i>50</i>&nbsp;        LOG.info(&quot;The conf size is &quot; + conferenceList.size());</b>
+<b class="fc"><i>51</i>&nbsp;        List&lt;Track&gt; rstList = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>52</i>&nbsp;        while (!isAssignedAllConference(conferenceList)) {</b>
+<b class="fc"><i>53</i>&nbsp;            LOG.info(&quot;Generate a new Track for assign the un-assigned conference&quot;);</b>
+<b class="fc"><i>54</i>&nbsp;            Track track = getANewTrackFromExistTracks(rstList);</b>
+<b class="fc"><i>55</i>&nbsp;            LOG.info(&quot;The new track is &quot; + track.toString());</b>
+<b class="fc"><i>56</i>&nbsp;            conferenceList.sort(Conference::compareTo);</b>
+<b class="fc"><i>57</i>&nbsp;            planConferenceInTrack(track, conferenceList);</b>
+<b class="fc"><i>58</i>&nbsp;            rstList.add(track);</b>
+<b class="fc"><i>59</i>&nbsp;        }</b>
+<b class="fc"><i>60</i>&nbsp;        LOG.info(&quot;ALl conferences are assigned&quot;);</b>
+<b class="fc"><i>61</i>&nbsp;        return rstList;</b>
+<i>62</i>&nbsp;    }
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;    private boolean isAssignedAllConference(List&lt;Conference&gt; conferenceList) {
+<b class="fc"><i>65</i>&nbsp;        for (Conference conference : conferenceList) {</b>
+<b class="fc"><i>66</i>&nbsp;            if (conference.getStatus() == ConferenceStatus.NOT_ASSIGNED) {</b>
+<b class="fc"><i>67</i>&nbsp;                return false;</b>
+<i>68</i>&nbsp;            }
+<b class="fc"><i>69</i>&nbsp;        }</b>
+<b class="fc"><i>70</i>&nbsp;        return true;</b>
+<i>71</i>&nbsp;    }
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;    @Override
+<i>74</i>&nbsp;    public void planConferenceInTrack(Track track, List&lt;Conference&gt; conferenceList) {
+<b class="fc"><i>75</i>&nbsp;        for (Conference conference : conferenceList) {</b>
+<b class="fc"><i>76</i>&nbsp;            if (conference.getStatus() == ConferenceStatus.ASSIGNED) {</b>
+<b class="fc"><i>77</i>&nbsp;                continue;</b>
+<i>78</i>&nbsp;            }
+<b class="fc"><i>79</i>&nbsp;            if (track.getCapacity() &gt;= conference.getDuration()) {</b>
+<b class="fc"><i>80</i>&nbsp;                conference.setStatus(ConferenceStatus.ASSIGNED);</b>
+<b class="fc"><i>81</i>&nbsp;                conference.setStartTime(track.getCurrentAssignedTime());</b>
+<b class="fc"><i>82</i>&nbsp;                track.getConferenceList().add(conference);</b>
+<b class="fc"><i>83</i>&nbsp;                track.setCapacity(track.getCapacity() - conference.getDuration());</b>
+<b class="fc"><i>84</i>&nbsp;                track.setCurrentAssignedTime(new Date(track.getCurrentAssignedTime().getTime() + conference.getDuration()));</b>
+<i>85</i>&nbsp;            }
+<b class="fc"><i>86</i>&nbsp;        }</b>
+<b class="fc"><i>87</i>&nbsp;        if (track.getType() == TrackType.MORNING) {</b>
+<b class="fc"><i>88</i>&nbsp;            Conference conference = new Conference();</b>
+<b class="fc"><i>89</i>&nbsp;            conference.setOriginStr(LUNCH);</b>
+<b class="fc"><i>90</i>&nbsp;            Calendar lunchTime = Calendar.getInstance();</b>
+<b class="fc"><i>91</i>&nbsp;            lunchTime.set(Calendar.HOUR_OF_DAY, lunchHour);</b>
+<b class="fc"><i>92</i>&nbsp;            lunchTime.set(Calendar.MINUTE, 0);</b>
+<b class="fc"><i>93</i>&nbsp;            lunchTime.set(Calendar.MILLISECOND, 0);</b>
+<b class="fc"><i>94</i>&nbsp;            conference.setStartTime(lunchTime.getTime());</b>
+<b class="fc"><i>95</i>&nbsp;            conference.setStatus(ConferenceStatus.ASSIGNED);</b>
+<b class="fc"><i>96</i>&nbsp;            conference.setType(ConferenceType.LUNCH);</b>
+<b class="fc"><i>97</i>&nbsp;            conference.setName(LUNCH);</b>
+<b class="fc"><i>98</i>&nbsp;            track.getConferenceList().add(conference);</b>
+<b class="fc"><i>99</i>&nbsp;        } else {</b>
+<b class="fc"><i>100</i>&nbsp;            Conference conference = new Conference();</b>
+<b class="fc"><i>101</i>&nbsp;            conference.setOriginStr(NETWORKING_EVENT);</b>
+<b class="fc"><i>102</i>&nbsp;            Calendar c = Calendar.getInstance();</b>
+<b class="fc"><i>103</i>&nbsp;            c.setTime(track.getCurrentAssignedTime());</b>
+<i>104</i>&nbsp;
+<b class="fc"><i>105</i>&nbsp;            if (c.get(Calendar.HOUR_OF_DAY) &lt; trackAfternoonEarlyEndHour) {</b>
+<b class="fc"><i>106</i>&nbsp;                Calendar networkEventTime = Calendar.getInstance();</b>
+<b class="fc"><i>107</i>&nbsp;                networkEventTime.set(Calendar.HOUR_OF_DAY, trackAfternoonEarlyEndHour);</b>
+<b class="fc"><i>108</i>&nbsp;                networkEventTime.set(Calendar.MINUTE, 0);</b>
+<b class="fc"><i>109</i>&nbsp;                networkEventTime.set(Calendar.MILLISECOND, 0);</b>
+<b class="fc"><i>110</i>&nbsp;                conference.setStartTime(networkEventTime.getTime());</b>
+<b class="fc"><i>111</i>&nbsp;            } else {</b>
+<b class="fc"><i>112</i>&nbsp;                conference.setStartTime(track.getCurrentAssignedTime());</b>
+<i>113</i>&nbsp;            }
+<b class="fc"><i>114</i>&nbsp;            conference.setStatus(ConferenceStatus.ASSIGNED);</b>
+<b class="fc"><i>115</i>&nbsp;            conference.setType(ConferenceType.NETWORKING_EVENT);</b>
+<b class="fc"><i>116</i>&nbsp;            conference.setName(NETWORKING_EVENT);</b>
+<b class="fc"><i>117</i>&nbsp;            track.getConferenceList().add(conference);</b>
+<i>118</i>&nbsp;        }
+<i>119</i>&nbsp;
+<b class="fc"><i>120</i>&nbsp;    }</b>
+<i>121</i>&nbsp;
+<i>122</i>&nbsp;    @Override
+<i>123</i>&nbsp;    public Track getANewTrackFromExistTracks(List&lt;Track&gt; rstList) {
+<b class="fc"><i>124</i>&nbsp;        Track track = new Track();</b>
+<b class="fc"><i>125</i>&nbsp;        track.setId(rstList.size());</b>
+<b class="fc"><i>126</i>&nbsp;        track.setDay(track.getId() / 2);</b>
+<b class="fc"><i>127</i>&nbsp;        track.setType(TrackType.valueOf(track.getId() % 2));</b>
+<b class="fc"><i>128</i>&nbsp;        Calendar starttime = Calendar.getInstance();</b>
+<b class="fc"><i>129</i>&nbsp;        starttime.set(Calendar.MINUTE, 0);</b>
+<b class="fc"><i>130</i>&nbsp;        starttime.set(Calendar.SECOND, 0);</b>
+<b class="fc"><i>131</i>&nbsp;        starttime.set(Calendar.MILLISECOND, 0);</b>
+<b class="fc"><i>132</i>&nbsp;        Calendar endtime = Calendar.getInstance();</b>
+<b class="fc"><i>133</i>&nbsp;        endtime.set(Calendar.MINUTE, 0);</b>
+<b class="fc"><i>134</i>&nbsp;        endtime.set(Calendar.SECOND, 0);</b>
+<b class="fc"><i>135</i>&nbsp;        endtime.set(Calendar.MILLISECOND, 0);</b>
+<b class="fc"><i>136</i>&nbsp;        if (track.getId() % 2 == 0) {</b>
+<b class="fc"><i>137</i>&nbsp;            starttime.set(Calendar.HOUR_OF_DAY, trackMorningStartHour);</b>
+<b class="fc"><i>138</i>&nbsp;            track.setStartTime(starttime.getTime());</b>
+<b class="fc"><i>139</i>&nbsp;            endtime.set(Calendar.HOUR_OF_DAY, trackMorningEndHour);</b>
+<b class="fc"><i>140</i>&nbsp;            track.setStartTime(endtime.getTime());</b>
+<i>141</i>&nbsp;        } else {
+<b class="fc"><i>142</i>&nbsp;            starttime.set(Calendar.HOUR_OF_DAY, trackAfternoonStartHour);</b>
+<b class="fc"><i>143</i>&nbsp;            track.setStartTime(starttime.getTime());</b>
+<b class="fc"><i>144</i>&nbsp;            endtime.set(Calendar.HOUR_OF_DAY, trackAfternoonEndHour);</b>
+<b class="fc"><i>145</i>&nbsp;            track.setStartTime(endtime.getTime());</b>
+<i>146</i>&nbsp;        }
+<b class="fc"><i>147</i>&nbsp;        track.setCapacity(endtime.getTimeInMillis() - starttime.getTimeInMillis());</b>
+<b class="fc"><i>148</i>&nbsp;        track.setCurrentAssignedTime(starttime.getTime());</b>
+<b class="fc"><i>149</i>&nbsp;        return track;</b>
+<i>150</i>&nbsp;    }
+<i>151</i>&nbsp;
+<i>152</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-10-11 13:44</div>
+</div>
+</body>
+</html>
